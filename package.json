@@ -1,0 +1,31 @@
+{
+  "name": "simple-web-components",
+  "description": "simple web components",
+  "author": "Daniel Scroggins",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^11.3.0"
+  },
+  "scripts": {
+    "start": "serve ./",
+    "postversion": "npm publish"
+  },
+  "homepage": "https://github.com/dscrog/web-components#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dscrog/web-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dscrog/web-components/issues"
+  },
+  "keywords": [
+    "web",
+    "components"
+  ],
+  "files": [
+    "source",
+    "tests"
+  ]
+}
