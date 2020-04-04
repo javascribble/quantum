@@ -1,1 +1,1 @@
-# web-components
+# simple-web-components
