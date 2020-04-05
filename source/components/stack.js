@@ -4,7 +4,7 @@ import { clone } from '../utilities/templates.js';
 const template = document.createElement('template');
 template.innerHTML = '<slot name="test" />';
 
-export default class Layout extends HTMLElement {
+export default class Stack extends HTMLElement {
     constructor() {
         super();
 
@@ -13,4 +13,4 @@ export default class Layout extends HTMLElement {
     }
 }
 
-define('layout', Layout);
+define('stack', Stack);
