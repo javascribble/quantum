@@ -1,6 +1,10 @@
-export default class Template extends HTMLTemplateElement {
-    constructor() {
+import { attachShadow } from '../utilities/shadow.js';
+
+export default class Component extends HTMLElement {
+    constructor(template) {
         super();
+
+        attachShadow(this, template);
     }
 
     static get observedAttributes() {
@@ -19,11 +23,11 @@ export default class Template extends HTMLTemplateElement {
         //Removed from DOM.
     }
 
-    attributeChangedCallback(attrName, oldVal, newVal) {
+    attributeChangedCallback(name, previousValue, currentValue) {
         //Called when an observed attribute (observableAttributes) is added/removed/updated/replaced.
     }
 
     adoptedCallback() {
         //Moved into a new document via adoptNode().
     }
-}
+};

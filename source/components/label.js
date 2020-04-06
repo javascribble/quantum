@@ -1,16 +1,13 @@
 import { define } from '../utilities/components.js';
-import { clone } from '../utilities/templates.js';
+import Component from '../abstractions/element.js';
 
 const template = document.createElement('template');
 template.innerHTML = '<div>Hello World!</div>';
 
-export default class Label extends HTMLElement {
+export default class LabelComponent extends Component {
     constructor() {
-        super();
-
-        const shadow = this.attachShadow({ mode: 'closed' });
-        shadow.appendChild(clone(template));
+        super(template);
     }
 };
 
-define('label', Label);
+define('label', LabelComponent);

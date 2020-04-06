@@ -1,16 +1,13 @@
 import { define } from '../utilities/components.js';
-import { clone } from '../utilities/templates.js';
+import Component from '../abstractions/element.js';
 
 const template = document.createElement('template');
 template.innerHTML = '<slot name="test" />';
 
-export default class Layout extends HTMLElement {
+export default class LayoutComponent extends Component {
     constructor() {
-        super();
-
-        const shadow = this.attachShadow({ mode: 'closed' });
-        shadow.appendChild(clone(template));
+        super(template);
     }
 }
 
-define('layout', Layout);
+define('layout', LayoutComponent);
