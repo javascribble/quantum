@@ -1,8 +1,8 @@
 import { define } from '../utilities/components.js';
-import Component from '../abstractions/element.js';
+import Component from '../extensions/element.js';
 
 const template = document.createElement('template');
-template.innerHTML = '<slot name="test" />';
+template.innerHTML = '<slot name="content" />';
 
 export default class StackComponent extends Component {
     constructor() {

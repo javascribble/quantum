@@ -30,4 +30,4 @@ export default class Component extends HTMLElement {
     adoptedCallback() {
         //Moved into a new document via adoptNode().
     }
-};
+}
