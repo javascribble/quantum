@@ -1,3 +1,3 @@
-export * from './components/label.js';
-export * from './components/layout.js';
-export * from './components/stack.js';
+export * from './layout/dock.js';
+export * from './layout/grid.js';
+export * from './layout/stack.js';

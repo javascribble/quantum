@@ -1,12 +1,10 @@
 import Component from '../abstractions/component.js';
 import { define } from '../utilities/elements.js';
-
-const template = document.createElement('template');
-template.innerHTML = '<slot name="content" />';
+import { contentSlot } from '../markup/content.js';
 
 export default class StackComponent extends Component {
     constructor() {
-        super(template);
+        super(contentSlot);
     }
 }
 
