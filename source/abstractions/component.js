@@ -1,10 +1,9 @@
-import { attachShadow } from '../utilities/shadow.js';
-
 export default class Component extends HTMLElement {
     constructor(template) {
         super();
 
-        attachShadow(this, template);
+        const shadow = this.attachShadow({ mode: 'closed' });
+        shadow.appendChild(template.content.cloneNode(true));
     }
 
     static get observedAttributes() {

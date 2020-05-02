@@ -1,0 +1,1 @@
+export const define = (name, type) => customElements.define(`${name}-component`, type);

@@ -5,10 +5,6 @@
             "path": "source"
         },
         {
-            "name": "styles",
-            "path": "styles"
-        },
-        {
             "name": "test",
             "path": "test"
         }
