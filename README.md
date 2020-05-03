@@ -2,4 +2,4 @@
 
 npm start
 
-localhost:5000/test/layout
+localhost:5000/test/example
