@@ -1,11 +1,11 @@
-import Component from '../abstractions/component.js';
+import { Component } from '../extensions/component.js';
 import { define } from '../utilities/elements.js';
 import { contentSlot } from '../templates/content.js';
 
-export default class MenuComponent extends Component {
+export default class Menu extends Component {
     constructor() {
-        super(contentSlot);
+        super();
     }
 }
 
-define('menu', MenuComponent);
+define('menu', Menu);

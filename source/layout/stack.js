@@ -1,11 +1,11 @@
-import Component from '../abstractions/component.js';
+import { Component } from '../extensions/component.js';
 import { define } from '../utilities/elements.js';
 import { contentSlot } from '../templates/content.js';
 
-export default class StackComponent extends Component {
+export default class Stack extends Component {
     constructor() {
-        super(contentSlot);
+        super();
     }
 }
 
-define('stack', StackComponent);
+define('stack', Stack);

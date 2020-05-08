@@ -1,4 +1,4 @@
-export default class Component extends HTMLElement {
+export class Component extends HTMLElement {
     constructor(template) {
         super();
     }
