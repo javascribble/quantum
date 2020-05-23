@@ -1,4 +1,4 @@
-# simple-web-components
+# simple web components
 
 npm install
 

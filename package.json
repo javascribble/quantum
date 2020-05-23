@@ -1,24 +1,24 @@
 {
-  "name": "simple-web-components",
+  "name": "@javascribble/components",
   "description": "simple web components",
   "author": "javascribble",
   "version": "0.0.1",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "serve": "^11.3.0"
+    "serve": "^11.3.1"
   },
   "scripts": {
     "start": "serve ./",
     "postversion": "npm publish"
   },
-  "homepage": "https://github.com/javascribble/simple-web-components#readme",
+  "homepage": "https://github.com/javascribble/components#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javascribble/simple-web-components.git"
+    "url": "git+https://github.com/javascribble/components.git"
   },
   "bugs": {
-    "url": "https://github.com/javascribble/simple-web-components/issues"
+    "url": "https://github.com/javascribble/components/issues"
   },
   "keywords": [
     "web",

@@ -6,4 +6,4 @@ export default class Grid extends HTMLElement {
     }
 }
 
-define('grid', Grid);
+define('grid-layout', Grid);

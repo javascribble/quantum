@@ -1,6 +1,6 @@
 import { define, template } from '../utilities/elements.js';
 
-export const tabs = template(`
+const tabs = template(`
 <style>
     .group { position: relative; width: 100%; height: 100%; }
     .tab > a { text-decoration: none; float: left; height: 30px; padding: 0px 10px; }
@@ -30,4 +30,4 @@ export default class Tabs extends HTMLElement {
     }
 }
 
-define('tabs', Tabs);
+define('tabs-layout', Tabs);

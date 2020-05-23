@@ -1,9 +1,9 @@
 import { define } from '../utilities/elements.js';
 
-export default class Stack extends HTMLElement {
+export class Selection extends HTMLElement {
     constructor() {
         super();
     }
 }
 
-define('stack-layout', Stack);
+define('selection-control', Selection);

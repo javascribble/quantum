@@ -6,4 +6,4 @@ export default class Dock extends HTMLElement {
     }
 }
 
-define('dock', Dock);
+define('dock-layout', Dock);
