@@ -1,5 +1,4 @@
-import { shadow, template, clone } from '../utilities/elements.js';
-import { define } from '../utilities/aliases.js';
+import { define, shadow, template, clone } from '../utilities/elements.js';
 
 const html = template(`        
 <style>

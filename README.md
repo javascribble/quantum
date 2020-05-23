@@ -4,4 +4,4 @@ npm install
 
 npm start
 
-localhost:5000/test/example
+localhost:5000/test/debug

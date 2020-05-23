@@ -1,4 +1,4 @@
-import { define } from '../utilities/aliases.js';
+import { define } from '../utilities/elements.js';
 
 export class Radial extends HTMLElement {
     constructor() {
