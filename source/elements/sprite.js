@@ -1,6 +1,8 @@
-import { define, shadow, template, clone } from '../utilities/elements.js';
+import { Component } from '../extensions/component.js';
+import { clone, template } from '../utilities/templates.js';
+import { define } from '../aliases/elements.js';
 
-const html = template(`        
+const sprite = template(`
 <style>
     @keyframes play {
         100% {
@@ -11,23 +13,21 @@ const html = template(`
 <div></div>
 `);
 
-export class Sprite extends HTMLElement {
+export class Sprite extends Component {
     constructor() {
-        super();
+        const template = clone(sprite);
+        const div = template.querySelector('div');
+
+        super(template);
 
         const style = {
             width: '15px',
             height: '20px',
             background: `url('${this.getAttribute('url')}')`,
             animation: 'play 1s steps(10) infinite'
-        }
+        };
 
-        const element = clone(html);
-        const div = element.querySelector('div');
         Object.assign(div.style, style);
-
-        const root = shadow(this);
-        root.appendChild(element);
     }
 }
 

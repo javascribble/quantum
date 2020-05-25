@@ -1,6 +1,8 @@
-import { define, template } from '../utilities/elements.js';
+import { Component } from '../extensions/component.js';
+import { template } from '../utilities/templates.js';
+import { define } from '../aliases/elements.js';
 
-const tabs = template(`
+const clone = template(`
 <style>
     .group { position: relative; width: 100%; height: 100%; }
     .tab > a { text-decoration: none; float: left; height: 30px; padding: 0px 10px; }
@@ -24,10 +26,10 @@ const tabs = template(`
 </div>
 `);
 
-export default class Tabs extends HTMLElement {
+export class Tabs extends Component {
     constructor() {
         super();
     }
 }
 
-define('tabs-layout', Tabs);
+define('js-tabs', Tabs);

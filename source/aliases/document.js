@@ -1,3 +1,3 @@
-export const createElement = document.createElement.bind(document);
+export const createElement = (tag) => document.createElement(tag);
 
-export const importNode = document.importNode.bind(document);
+export const importNode = (node) => document.importNode(node);
