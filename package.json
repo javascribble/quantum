@@ -4,12 +4,12 @@
   "author": "javascribble",
   "version": "0.0.6",
   "license": "MIT",
-  "main": "main.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "postversion": "npm publish --access public"
   },
+  "main": "./source/main.js",
   "homepage": "https://github.com/javascribble/quantum#readme",
   "repository": {
     "type": "git",
