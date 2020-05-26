@@ -1,1 +1,3 @@
-export const define = (type) => customElements.define(`q-${type.name.toLowerCase()}`, type);
+import { options } from '../constants/defaults.js';
+
+export const define = (type) => customElements.define(`${options.prefix}-${type.name.toLowerCase()}`, type);
