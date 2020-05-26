@@ -4,6 +4,7 @@
   "author": "javascribble",
   "version": "0.0.5",
   "license": "MIT",
+  "main": "main.js",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
