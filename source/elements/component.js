@@ -1,4 +1,4 @@
-import { shadow } from './aliases/elements.js';
+import { shadow } from '../aliases/elements.js';
 
 export class Component extends HTMLElement {
     constructor() {
