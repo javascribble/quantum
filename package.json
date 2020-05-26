@@ -2,12 +2,12 @@
   "name": "@javascribble/quantum",
   "description": "simple web components",
   "author": "javascribble",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "postversion": "npm publish"
+    "postversion": "npm publish --access public"
   },
   "homepage": "https://github.com/javascribble/quantum#readme",
   "repository": {
