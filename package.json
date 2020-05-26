@@ -1,24 +1,21 @@
 {
-  "name": "@javascribble/components",
+  "name": "@javascribble/quantum",
   "description": "simple web components",
   "author": "javascribble",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "MIT",
   "dependencies": {},
-  "devDependencies": {
-    "serve": "^11.3.1"
-  },
+  "devDependencies": {},
   "scripts": {
-    "start": "serve ./",
     "postversion": "npm publish"
   },
-  "homepage": "https://github.com/javascribble/components#readme",
+  "homepage": "https://github.com/javascribble/quantum#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javascribble/components.git"
+    "url": "git+https://github.com/javascribble/quantum.git"
   },
   "bugs": {
-    "url": "https://github.com/javascribble/components/issues"
+    "url": "https://github.com/javascribble/quantum/issues"
   },
   "keywords": [
     "web",

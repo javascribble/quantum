@@ -3,10 +3,6 @@
         {
             "name": "source",
             "path": "source"
-        },
-        {
-            "name": "test",
-            "path": "test"
         }
     ]
 }

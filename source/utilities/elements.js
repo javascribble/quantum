@@ -1,1 +1,0 @@
-export const shadow = (element) => element.attachShadow({ mode: 'closed' });

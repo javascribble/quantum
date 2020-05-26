@@ -1,7 +1,7 @@
-import { createElement } from '../aliases/document.js';
+import { create } from '../aliases/document.js';
 
 export const template = (html) => {
-    const template = createElement('template');
+    const template = create('template');
     template.innerHTML = html;
     return template;
 };
