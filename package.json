@@ -22,7 +22,6 @@
     "components"
   ],
   "files": [
-    "source",
-    "tests"
+    "source"
   ]
 }
