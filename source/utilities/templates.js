@@ -6,4 +6,4 @@ export const template = (html) => {
     return template;
 };
 
-export const clone = (template) => template.content.cloneNode(true);
+export const repeat = (html, models, delimiter) => models.map(html).join(delimiter || '');
