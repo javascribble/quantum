@@ -8,6 +8,6 @@ export const addListener = (element, event, handler) => element.addEventListener
 
 export const removeListener = (element, event, handler) => element.removeEventListener(event, handler);
 
-export const shadow = (element, options = { mode: 'closed' }) => element.attachShadow(options);
+export const shadow = (element, options = { mode: 'open' }) => element.attachShadow(options);
 
 export const clone = (element, deep = true) => (element.content || element).cloneNode(deep);
