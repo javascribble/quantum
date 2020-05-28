@@ -1,3 +1,5 @@
-import { options } from '../constants/defaults.js';
+import { Component } from "../elements/component";
 
-export const define = (type) => customElements.define(`${options.prefix}-${type.name.toLowerCase()}`, type);
+const kebabType = (type) => type === Component ? 'component' : `${type.name.toLowerCase()}-${kebabType(type.prototype)}`;
+
+export const define = (type) => customElements.define(kebabType(type), type);

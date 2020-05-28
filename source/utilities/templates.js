@@ -6,4 +6,4 @@ export const template = (html) => {
     return template;
 };
 
-export const repeat = (html, models, delimiter) => models.map(html).join(delimiter || '');
+export const repeat = (interpolation, models, delimiter) => models.map(interpolation).join(delimiter || '');
