@@ -1,9 +1,9 @@
-import { shadow } from '../aliases/elements.js';
+import { append, shadow, clone } from '../aliases/elements.js';
 
 export class Component extends HTMLElement {
-    constructor() {
+    constructor(template) {
         super();
 
-        shadow(this);
+        append(shadow(this), clone(template));
     }
 }
