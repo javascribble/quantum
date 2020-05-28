@@ -1,28 +1,28 @@
 {
-  "name": "@javascribble/quantum",
-  "description": "simple web components",
-  "author": "javascribble",
-  "version": "0.2.11",
-  "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {},
-  "scripts": {
-    "postversion": "npm publish --access public"
-  },
-  "main": "./source/main.js",
-  "homepage": "https://github.com/javascribble/quantum#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/javascribble/quantum.git"
-  },
-  "bugs": {
-    "url": "https://github.com/javascribble/quantum/issues"
-  },
-  "keywords": [
-    "web",
-    "components"
-  ],
-  "files": [
-    "source"
-  ]
+    "name": "@javascribble/quantum",
+    "description": "simple web components",
+    "author": "javascribble",
+    "version": "0.2.11",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "postversion": "npm publish --access public"
+    },
+    "main": "./source/main.js",
+    "homepage": "https://github.com/javascribble/quantum#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/javascribble/quantum.git"
+    },
+    "bugs": {
+        "url": "https://github.com/javascribble/quantum/issues"
+    },
+    "keywords": [
+        "web",
+        "components"
+    ],
+    "files": [
+        "source"
+    ]
 }
