@@ -1,5 +1,7 @@
 import { Component } from "../elements/component";
 
-const kebabType = (type) => type === Component ? 'component' : `${type.name.toLowerCase()}-${kebabType(Object.getPrototypeOf(type))}`;
+const typeName = (type) => type.name.toLowerCase();
 
-export const define = (type) => customElements.define(kebabType(type), type);
+const typeKebab = (type) => type === Component ? typeName(type) : `${typeName(type)}-${typeKebab(Object.getPrototypeOf(type))}`;
+
+export const define = (type) => customElements.define(typeKebab(type), type);
