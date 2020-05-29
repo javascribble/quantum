@@ -1,6 +1,10 @@
 import { create } from '../aliases/document.js';
 
-export const template = (html) => {
+export const template = (html, ...css) => {
+    if (css.length > 0) {
+        html = `<style>${css.join('')}</style>${html}`;
+    }
+
     const template = create('template');
     template.innerHTML = html;
     return template;
