@@ -1,4 +1,5 @@
 import { append, shadow, clone } from '../aliases/elements.js';
+import { warn } from '../aliases/console.js';
 
 export class Quantum extends HTMLElement {
     constructor(template) {
@@ -11,17 +12,17 @@ export class Quantum extends HTMLElement {
         if (this.attributes) {
             for (const name in this.attributes) {
                 if (this.hasOwnProperty(name)) {
-                    throw new Error(`Attribute '${name}' already in use.`);
-                } else {
-                    Object.defineProperty(this.prototype, name, {
-                        get() {
-                            return this.getAttribute(name);
-                        },
-                        set(value) {
-                            this.setAttribute(name, value);
-                        }
-                    });
+                    warn(`Attribute '${name}' hides existing property.`);
                 }
+
+                Object.defineProperty(this.prototype, name, {
+                    get() {
+                        return this.getAttribute(name);
+                    },
+                    set(value) {
+                        this.setAttribute(name, value);
+                    }
+                });
             }
 
             return Object.keys(this.attributes);
