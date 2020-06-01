@@ -1,4 +1,3 @@
-export * from './aliases/console.js';
 export * from './aliases/document.js';
 export * from './aliases/elements.js';
 export * from './aliases/events.js';

@@ -1,5 +1,4 @@
 import { append, shadow, clone } from '../aliases/elements.js';
-import { warn } from '../aliases/console.js';
 
 export class Quantum extends HTMLElement {
     constructor(template) {
@@ -11,10 +10,6 @@ export class Quantum extends HTMLElement {
     static get observedAttributes() {
         if (this.attributes) {
             for (const name in this.attributes) {
-                if (this.hasOwnProperty(name)) {
-                    warn(`Attribute '${name}' hides existing property.`);
-                }
-
                 Object.defineProperty(this.prototype, name, {
                     get() {
                         return this.getAttribute(name);
