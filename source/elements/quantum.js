@@ -7,13 +7,28 @@ export class Quantum extends HTMLElement {
         append(shadow(this), clone(template));
     }
 
-    //static get observedAttributes() { return []; }
+    static get observedAttributes() {
+        if (this.attributes) {
+            for (const name in this.attributes) {
+                if (this.hasOwnProperty(name)) {
+                    throw new Error(`Attribute '${name}' already in use.`);
+                } else {
+                    Object.defineProperty(this.prototype, name, {
+                        get() {
+                            return this.getAttribute(name);
+                        },
+                        set(value) {
+                            this.setAttribute(name, value);
+                        }
+                    });
+                }
+            }
 
-    attributeChangedCallback(attribute, previous, current) {
-        this[attribute] = current;
+            return Object.keys(this.attributes);
+        }
     }
 
-    //connectedCallback
-    //disconnectedCallback
-    //adoptedCallback
+    attributeChangedCallback(attribute, previous, current) {
+        this.constructor.attributes[attribute](this, current, previous);
+    }
 }

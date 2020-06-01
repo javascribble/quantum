@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/test/debug.css" />
+        <script type="module" src="/build/main.js"></script>
+        <script type="module">
+            import { Quantum, define, template } from '/build/main.js';
+
+            const test = template('<div>name</div>');
+
+            class Test extends Quantum {
+                constructor() {
+                    super(test);
+
+                    this.label = this.shadowRoot.querySelector('div');
+                }
+
+                static attributes = {
+                    test: (element, value) => {
+                        element.label.innerText = value;
+                        console.log(value);
+                    }
+                };
+            }
+
+            define(Test);
+        </script>
+    </head>
+    <body onload="load()">
+        <quantum-test test="1"></quantum-test>
+    </body>
+    <script>
+        function load() {
+            document.querySelector('quantum-test').test = '2';
+        }
+    </script>
+</html>

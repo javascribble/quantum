@@ -4,8 +4,18 @@
     "version": "0.2.15",
     "license": "MIT",
     "dependencies": {},
-    "devDependencies": {},
+    "devDependencies": {
+        "@javascribble/rollup-plugin-modulify": "*",
+        "@rollup/plugin-node-resolve": "*",
+        "npm-run-all": "*",
+        "rollup": "^2.12.0",
+        "serve": "*"
+    },
     "scripts": {
+        "serve": "serve ./",
+        "build": "rollup -c quantum.rollup.config.js",
+        "watch": "rollup -w -c quantum.rollup.config.js",
+        "start": "npm-run-all --parallel serve watch",
         "postversion": "npm publish --access public"
     },
     "main": "./source/main.js",
