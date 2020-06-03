@@ -5,14 +5,14 @@ export const getTyped = (element, attribute) => {
         let value = get(element, attribute);
         if (value === "true") {
             return true;
+        } else if (value === "false") {
+            return false;
         } else if (isNaN(value)) {
             return value;
         } else {
             return Number(value);
         }
     }
-
-    return false;
 };
 
 export const setTyped = (element, attribute, value) => {
