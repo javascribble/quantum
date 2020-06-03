@@ -10,15 +10,23 @@ export const getTyped = (element, attribute) => {
             case isNaN(value): return value;
             default: return Number(value);
         }
+    } else {
+        return null;
     }
 };
 
 export const setTyped = (element, attribute, value) => {
-    if (value === true) {
-        set(element, attribute, '');
-    } else if (value === false) {
-        remove(element, attribute);
-    } else {
-        set(element, attribute, value);
+    switch (value) {
+        case true:
+            set(element, attribute, '');
+            break;
+        case false:
+        case null:
+        case undefined:
+            remove(element, attribute);
+            break;
+        default:
+            set(element, attribute, value);
+            break;
     }
 };
