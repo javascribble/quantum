@@ -4,12 +4,16 @@ export const query = (element, selector) => element.querySelector(selector);
 
 export const queryAll = (element, selector) => element.querySelectorAll(selector);
 
-export const dispatch = (element, event) => element.dispatchEvent(event);
+export const on = (element, event, handler) => element.addEventListener(event, handler);
 
-export const addListener = (element, event, handler) => element.addEventListener(event, handler);
+export const off = (element, event, handler) => element.removeEventListener(event, handler);
 
-export const removeListener = (element, event, handler) => element.removeEventListener(event, handler);
+export const get = (element, attribute) => element.getAttribute(attribute);
 
-export const shadow = (element, options = { mode: 'open' }) => element.attachShadow(options);
+export const set = (element, attribute, value) => element.setAttribute(attribute, value);
 
-export const clone = (element, deep = true) => (element.content || element).cloneNode(deep);
+export const has = (element, attribute) => element.hasAttribute(attribute);
+
+export const remove = (element, attribute) => element.removeAttribute(attribute);
+
+export const toggle = (element, attribute) => element.toggleAttribute(attribute);

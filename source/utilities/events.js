@@ -1,6 +1,1 @@
-import { dispatch } from '../aliases/elements.js';
-
-export const raise = (element, event) => {
-    dispatch(element, event);
-    return !event.defaultPrevented;
-};
+export const dispatch = (element, event, options) => element.dispatchEvent(new CustomEvent(event, { cancelable: true, ...options }));
