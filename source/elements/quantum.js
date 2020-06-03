@@ -1,3 +1,5 @@
+import { getTyped, setTyped } from '../utilities/attributes.js';
+
 export class Quantum extends HTMLElement {
     constructor() {
         super();
@@ -8,10 +10,10 @@ export class Quantum extends HTMLElement {
             for (const name in this.attributes) {
                 Object.defineProperty(this.prototype, name, {
                     get() {
-                        return this.getAttribute(name);
+                        return getTyped(this, name);
                     },
                     set(value) {
-                        this.setAttribute(name, value);
+                        setTyped(this, name, value);
                     }
                 });
             }
