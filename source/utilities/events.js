@@ -1,4 +1,4 @@
-import { dispatch } from '../aliases/events.js';
+import { dispatch } from '../aliases/elements.js';
 
 export const raise = (element, event) => {
     dispatch(element, event);
