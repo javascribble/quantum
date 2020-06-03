@@ -3,14 +3,12 @@ import { get, set, has, remove } from '../aliases/elements.js';
 export const getTyped = (element, attribute) => {
     if (has(element, attribute)) {
         let value = get(element, attribute);
-        if (value === "true") {
-            return true;
-        } else if (value === "false") {
-            return false;
-        } else if (isNaN(value)) {
-            return value;
-        } else {
-            return Number(value);
+        switch (value) {
+            case '':
+            case 'true': return true;
+            case 'false': return false;
+            case isNaN(value): return value;
+            default: return Number(value);
         }
     }
 };
