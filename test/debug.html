@@ -10,15 +10,17 @@
             class Test extends Quantum {
                 constructor() {
                     super(test);
-
-                    this.label = this.shadowRoot.querySelector('div');
                 }
 
                 static attributes = {
-                    test: (element, value) => {
-                        element.label.innerText = value;
+                    test: elements => value => {
+                        elements.label.innerText = value;
                         console.log(value);
                     }
+                };
+
+                static elements = {
+                    label: 'div'
                 };
             }
 

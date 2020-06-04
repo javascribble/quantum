@@ -1,0 +1,1 @@
+export const last = array => array.length > 0 ? array[array.length - 1] : null;

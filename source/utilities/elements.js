@@ -1,9 +1,3 @@
-import { Quantum } from '../elements/quantum.js';
-
-const typeName = (type) => type.name.toLowerCase();
-
-const typeKebab = (type) => type === Quantum ? typeName(type) : `${typeKebab(Object.getPrototypeOf(type))}-${typeName(type)}`;
-
-export const define = (type) => customElements.define(typeKebab(type), type);
+export const define = (type) => customElements.define(`quantum-${type.name.toLowerCase()}`, type);
 
 export const shadow = (element, options) => element.attachShadow({ mode: 'open', ...options });
