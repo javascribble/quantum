@@ -4,7 +4,6 @@ export * from './aliases/event.js';
 export * from './aliases/object.js';
 export * from './aliases/promise.js';
 export * from './elements/quantum.js';
-export * from './utilities/attributes.js';
 export * from './utilities/arrays.js';
 export * from './utilities/attributes.js';
 export * from './utilities/elements.js';
