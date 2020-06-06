@@ -19,15 +19,6 @@ export class Quantum extends HTMLElement {
         const elements = map(constructor.elements, selector => query(root, selector));
         this.#renderers = map(constructor.attributes, renderer => renderer(elements));
         iterate(constructor.events, (event, delegate) => delegate(this, elements, dispatcher(this, event)));
-
-        // const slots = root.querySelectorAll('slot');
-        // for (const slot of slots) {
-        //     slot.addEventListener('slotchange', (event) => {
-        //         for (const element of slot.assignedElements()) {
-        //             // TODO: add/remove slot events, named slot data structures.
-        //         }
-        //     });
-        // }
     }
 
     static get observedAttributes() {
