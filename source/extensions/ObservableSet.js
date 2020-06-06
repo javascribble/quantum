@@ -22,13 +22,17 @@ export class ObservableSet extends Set {
 
     add(value) {
         if (super.add(value)) {
-            this.onAdd.forEach(listener => listener(value));
+            for (const listener of this.onAdd) {
+                listener(value);
+            }
         }
     }
 
     delete(value) {
         if (super.delete(value)) {
-            this.onDelete.forEach(listener => listener(value));
+            for (const listener of this.onDelete) {
+                listener(value);
+            }
         }
     }
 }
