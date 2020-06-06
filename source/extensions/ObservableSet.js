@@ -5,13 +5,13 @@ export class ObservableSet extends Set {
 
     add(value) {
         if (super.add(value)) {
-            this?.onAdd(element);
+            this?.onAdd(value);
         }
     }
 
     delete(value) {
         if (super.delete(value)) {
-            this?.onDelete(element);
+            this?.onDelete(value);
         }
     }
 }
