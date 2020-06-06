@@ -16,14 +16,14 @@ export const clone = (element, deep = true) => (element.content || element).clon
 
 export const repeat = (interpolation, models, delimiter) => models.map(interpolation).join(delimiter || '');
 
-export const slot = (root, name) => {
+export const observeSlot = (root, name) => {
     const observableSet = new ObservableSet();
     const slot = query(root, name ? `slot[name=${name}]` : 'slot');
     slot.addEventListener('slotchange', (event) => {
         const a = slot.assignedElements();
         const b = Array.from(observableSet);
-        difference(a, b).forEach(observableSet.add);
-        difference(b, a).forEach(observableSet.delete);
+        difference(a, b).forEach(observableSet.add.bind(observableSet));
+        difference(b, a).forEach(observableSet.delete.bind(observableSet));
     });
 
     return observableSet;
