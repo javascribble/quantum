@@ -1,7 +1,9 @@
 import { entries, fromEntries } from '../aliases/object.js';
 
-export const iterate = (object, delegate) => entries(object).forEach(entry => delegate.apply(null, entry));
+const apply = delegate => entry => delegate.apply(null, entry);
 
-export const filter = (object, predicate) => fromEntries(entries(object).filter(predicate));
+export const iterate = (object, delegate) => entries(object).forEach(apply(delegate));
 
-export const map = (object, predicate) => fromEntries(entries(object).map(predicate));
+export const filter = (object, delegate) => fromEntries(entries(object).filter(apply(delegate)));
+
+export const map = (object, delegate) => fromEntries(entries(object).map(apply(delegate)));

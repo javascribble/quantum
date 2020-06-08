@@ -1,7 +1,7 @@
 import { get, set, has, remove } from '../aliases/element.js';
 import { defineProperty } from '../aliases/object.js';
 
-export const defineAttributes = (object, attributes) => {
+export const defineAccessors = (object, attributes) => {
     for (const attribute of attributes) {
         defineProperty(object, attribute, {
             get() {
