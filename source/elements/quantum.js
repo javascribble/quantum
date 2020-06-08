@@ -18,7 +18,7 @@ export class Quantum extends HTMLElement {
         const { attributes, elements, events } = this.constructor;
         const mappedElements = map(elements, (property, selector) => [property, query(root, selector)]);
         const mappedAttributes = map(attributes, (property, renderer) => [property, renderer(mappedElements)]);
-        const remappedAttributes = map(mappedAttributes, property => [property, this[property]]);
+        const remappedAttributes = map(mappedAttributes, property => [property, this[property].bind(this)]);
         iterate(events, (event, delegate) => delegate(dispatcher(this, event), mappedElements, remappedAttributes));
 
         this.#renderers = mappedAttributes;
