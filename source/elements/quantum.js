@@ -1,7 +1,7 @@
 import { append, query } from '../aliases/element.js';
 import { keys } from '../aliases/object.js';
+import { iterate, filter, map } from '../utilities/objects.js';
 import { defineAttributes } from '../utilities/attributes.js';
-import { iterate, map } from '../utilities/objects.js';
 import { dispatcher } from '../utilities/events.js';
 import { shadow } from '../utilities/elements.js';
 import { clone } from '../utilities/templates.js';
