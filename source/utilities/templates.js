@@ -1,6 +1,5 @@
 import { ObservableSet } from '../extensions/ObservableSet.js';
 import { difference } from '../utilities/arrays.js';
-import { query } from '../aliases/element.js';
 
 export const template = (html, ...css) => {
     if (css.length > 0) {
@@ -16,14 +15,13 @@ export const clone = (element, deep = true) => (element.content || element).clon
 
 export const repeat = (interpolation, models, delimiter) => models.map(interpolation).join(delimiter || '');
 
-export const observeSlot = (root, name) => {
+export const observeSlot = (slot) => {
     const observableSet = new ObservableSet();
-    const slot = query(root, name ? `slot[name=${name}]` : 'slot');
     slot.addEventListener('slotchange', (event) => {
         const a = slot.assignedElements();
         const b = Array.from(observableSet);
-        difference(a, b).forEach(observableSet.add.bind(observableSet));
-        difference(b, a).forEach(observableSet.delete.bind(observableSet));
+        difference(a, b).forEach(value => observableSet.add(value));
+        difference(b, a).forEach(value => observableSet.delete(value));
     });
 
     return observableSet;

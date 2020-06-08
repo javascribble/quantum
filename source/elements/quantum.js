@@ -15,10 +15,11 @@ export class Quantum extends HTMLElement {
         const root = shadow(this);
         append(root, clone(template));
 
-        const constructor = this.constructor;
-        const elements = map(constructor.elements, selector => query(root, selector));
-        this.#renderers = map(constructor.attributes, renderer => renderer(elements));
-        iterate(constructor.events, (event, delegate) => delegate(this, elements, dispatcher(this, event)));
+        const { attributes, elements, events } = this.constructor;
+        const filteredAttributes = filter(this, attributes);
+        const mappedElements = map(elements, selector => query(root, selector));
+        this.#renderers = map(attributes, renderer => renderer(mappedElements));
+        iterate(events, (event, delegate) => delegate(dispatcher(this, event), mappedElements, filteredAttributes));
     }
 
     static get observedAttributes() {
