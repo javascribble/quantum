@@ -1,5 +1,5 @@
-import { append, query } from '../aliases/element.js';
 import { keys } from '../aliases/object.js';
+import { append, query } from '../aliases/element.js';
 import { defineAccessors } from '../utilities/attributes.js';
 import { iterate, map } from '../utilities/objects.js';
 import { dispatcher } from '../utilities/events.js';
@@ -18,8 +18,9 @@ export class Quantum extends HTMLElement {
         const { attributes, elements, events } = this.constructor;
         const mappedElements = map(elements, (property, selector) => [property, query(root, selector)]);
         const mappedAttributes = map(attributes, (property, renderer) => [property, renderer(mappedElements)]);
-        const remappedAttributes = map(mappedAttributes, property => [property, this[property].bind(this)]);
-        iterate(events, (event, delegate) => delegate(dispatcher(this, event), mappedElements, remappedAttributes));
+
+        // TODO: This should only expose attributes rather than the entire component.
+        iterate(events, (event, delegate) => delegate(dispatcher(this, event), mappedElements, this)); //this.attributes));
 
         this.#renderers = mappedAttributes;
     }
