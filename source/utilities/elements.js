@@ -4,4 +4,4 @@ export const id = (length = options.idLength) => length === 0 ? '' : `${(Math.ra
 
 export const define = (type) => customElements.define(`${options.tagPrefix}-${type.name.toLowerCase()}`, type);
 
-export const shadow = (element, options) => element.attachShadow({ mode: options.shadowMode, ...options });
+export const shadow = (element) => element.attachShadow({ mode: options.shadowMode });
