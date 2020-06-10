@@ -1,4 +1,5 @@
 export const options = {
     tagPrefix: 'quantum',
-    shadowMode: 'open'
+    shadowMode: 'open',
+    idLength: 32
 };
