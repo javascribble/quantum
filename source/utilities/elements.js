@@ -1,3 +1,5 @@
-export const define = (type) => customElements.define(`quantum-${type.name.toLowerCase()}`, type);
+import { options } from '../constants/options.js';
 
-export const shadow = (element, options) => element.attachShadow({ mode: 'open', ...options });
+export const define = (type) => customElements.define(`${options.tagPrefix}-${type.name.toLowerCase()}`, type);
+
+export const shadow = (element, options) => element.attachShadow({ mode: options.shadowMode, ...options });
