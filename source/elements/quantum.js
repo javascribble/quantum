@@ -13,16 +13,14 @@ export class Quantum extends HTMLElement {
         super();
 
         const root = shadow(this);
-        append(root, clone(template));
+        if (template) {
+            append(root, clone(template));
+        }
 
         const { attributes, elements, events } = this.constructor;
         const mappedElements = map(elements, (property, selector) => [property, query(root, selector)]);
-        const mappedAttributes = map(attributes, (property, renderer) => [property, renderer(mappedElements)]);
-
-        // TODO: This should only expose attributes rather than the entire component.
-        iterate(events, (event, delegate) => delegate(dispatcher(this, event), mappedElements, this)); //this.attributes));
-
-        this.#renderers = mappedAttributes;
+        this.#renderers = map(attributes, (property, renderer) => [property, renderer(mappedElements)]);
+        iterate(events, (event, delegate) => delegate(dispatcher(this, event), this.#renderers, this));
     }
 
     static attributes = {};
