@@ -21,8 +21,9 @@ export const getTypedAttribute = (element, attribute) => {
             case '':
             case 'true': return true;
             case 'false': return false;
-            case isNaN(value): return value;
-            default: return Number(value);
+            default:
+                const number = Number(value);
+                return isNaN(number) ? value : number;
         }
     } else {
         return null;
