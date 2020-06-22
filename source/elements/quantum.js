@@ -14,6 +14,7 @@ export class Quantum extends HTMLElement {
 
         const root = shadow(this);
         append(root, clone(template));
+
         const { attributes, elements, events } = this.constructor;
         const mappedElements = map(elements, (property, selector) => [property, query(root, selector)]);
         this.#renderers = map(attributes, (property, renderer) => [property, renderer(mappedElements)]);

@@ -1,4 +1,5 @@
 export * from './aliases/array.js';
+export * from './aliases/document.js';
 export * from './aliases/element.js';
 export * from './aliases/event.js';
 export * from './aliases/object.js';

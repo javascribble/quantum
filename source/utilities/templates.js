@@ -1,12 +1,13 @@
 import { ObservableSet } from '../extensions/ObservableSet.js';
 import { difference } from '../utilities/arrays.js';
+import { create } from '../aliases/document.js';
 
 export const template = (html, ...css) => {
     if (css.length > 0) {
         html = `<style>${css.join('')}</style>${html}`;
     }
 
-    const template = document.createElement('template');
+    const template = create('template');
     template.innerHTML = html;
     return template;
 };
