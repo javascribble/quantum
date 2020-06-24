@@ -1,8 +1,8 @@
-import { requestFrame, cancelFrame } from '../aliases/window.js';
+import { now, requestFrame, cancelFrame } from '../aliases/window.js';
 
 export const animate = (delegate) => {
     let frame = 0;
-    let previousTime = performance.now();
+    let previousTime = now();
     const runFrame = (currentTime) => {
         let deltaTime = (currentTime - previousTime);
         if (delegate(deltaTime)) {

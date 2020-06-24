@@ -1,6 +1,7 @@
 import { ObservableSet } from '../extensions/collections.js';
 import { difference } from '../utilities/arrays.js';
 import { create } from '../aliases/document.js';
+import { on } from '../aliases/element.js';
 
 export const template = (html, ...css) => {
     if (css.length > 0) {
@@ -18,7 +19,7 @@ export const repeat = (interpolation, models, delimiter) => models.map(interpola
 
 export const observeSlot = (slot) => {
     const observableSet = new ObservableSet();
-    slot.addEventListener('slotchange', (event) => {
+    on(slot, 'slotchange', (event) => {
         const a = slot.assignedElements();
         const b = Array.from(observableSet);
         difference(a, b).forEach(value => observableSet.add(value));
