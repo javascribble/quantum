@@ -1,4 +1,4 @@
-import { ObservableSet } from '../extensions/ObservableSet.js';
+import { ObservableSet } from '../extensions/collections.js';
 import { difference } from '../utilities/arrays.js';
 import { create } from '../aliases/document.js';
 
