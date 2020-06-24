@@ -11,5 +11,6 @@ export const animate = (delegate) => {
         }
     };
 
+    frame = requestFrame(runFrame);
     return () => cancelFrame(frame);
 };
