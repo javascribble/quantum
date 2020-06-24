@@ -1,2 +1,2 @@
-export const requestFrame = () => window.requestAnimationFrame();
-export const cancelFrame = () => window.cancelAnimationFrame();
+export const requestFrame = (delegate) => window.requestAnimationFrame(delegate);
+export const cancelFrame = (frame) => window.cancelAnimationFrame(frame);
