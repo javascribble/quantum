@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module" src="/source/main.js"></script>
         <script type="module">
-            import { Quantum, query, define, template } from '/source/main.js';
+            import { Quantum, define, template } from '/source/main.js';
 
             const test = template('<div></div>');
 
@@ -14,7 +14,7 @@
 
                 static attributes = {
                     test: root => {
-                        const label = query(root, 'div');
+                        const label = root.querySelector('div');
                         return value => {
                             label.innerText = value;
                             console.log(value);
@@ -24,7 +24,7 @@
 
                 static events = {
                     raise: (root, dispatch) => {
-                        const label = query(root, 'div');
+                        const label = root.querySelector('div');
                         label.onclick = dispatch;
                     }
                 }

@@ -1,10 +1,6 @@
-import { keys } from '../aliases/object.js';
-import { append } from '../aliases/element.js';
-import { defineAttributes } from '../utilities/attributes.js';
-import { iterate, map } from '../utilities/objects.js';
-import { dispatch } from '../utilities/events.js';
-import { shadow } from '../utilities/elements.js';
-import { clone } from '../utilities/templates.js';
+import { defineProperty, keys } from '../aliases/object.js';
+import { attachShadow, cloneNode, dispatchEvent, getAttribute, setAttribute } from '../decorators/element.js';
+import { forEach, map } from '../extensions/object.js';
 
 export class Quantum extends HTMLElement {
     #renderers = {};
@@ -12,19 +8,32 @@ export class Quantum extends HTMLElement {
     constructor(template) {
         super();
 
-        const root = shadow(this);
-        append(root, clone(template));
+        const root = attachShadow(this);
+        root.appendChild(cloneNode(template));
 
         const { attributes, events } = this.constructor;
-        this.#renderers = map(attributes, (attribute, renderer) => [attribute, renderer(root)]);
-        iterate(events, (event, dispatcher) => dispatcher(root, options => dispatch(this, event, options)));
+        const apply = delegate => entry => delegate(...entry);
+        this.#renderers = map(attributes, apply((attribute, renderer) => [attribute, renderer(root)]));
+        forEach(events, apply((event, dispatcher) => dispatcher(root, options => dispatchEvent(this, event, options))));
     }
 
     static attributes = {};
     static events = {};
 
     static get observedAttributes() {
-        return defineAttributes(this.prototype, keys(this.attributes));
+        const attributes = keys(this.attributes);
+        for (const attribute of attributes) {
+            defineProperty(this.prototype, attribute, {
+                get() {
+                    return getAttribute(this, attribute);
+                },
+                set(value) {
+                    setAttribute(this, attribute, value);
+                }
+            });
+        }
+
+        return attributes;
     }
 
     attributeChangedCallback(attribute, previous, current) {
