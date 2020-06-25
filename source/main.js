@@ -5,7 +5,6 @@ export * from './aliases/event.js';
 export * from './aliases/object.js';
 export * from './aliases/promise.js';
 export * from './aliases/window.js';
-export * from './constants/options.js';
 export * from './elements/quantum.js';
 export * from './extensions/collections.js';
 export * from './utilities/animation.js';
