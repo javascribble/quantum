@@ -1,0 +1,1 @@
+export const apply = delegate => arguments => delegate.apply(null, arguments);

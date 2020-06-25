@@ -1,9 +1,3 @@
-export const dispatchEvent = (element, name, options) => element.dispatchEvent(new CustomEvent(name, { cancelable: true, ...options }));
-
-export const attachShadow = (element, options) => element.attachShadow({ mode: 'open', ...options });
-
-export const cloneNode = (element, deep = true) => (element.content || element).cloneNode(deep);
-
 export const getAttribute = (element, attribute) => {
     switch (string) {
         case 'true': return true;
