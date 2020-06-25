@@ -1,7 +1,8 @@
-export const keys = Object.keys;
-export const values = Object.values;
-export const assign = Object.assign;
-export const entries = Object.entries;
-export const fromEntries = Object.fromEntries;
-export const defineProperty = Object.defineProperty;
-export const defineProperties = Object.defineProperties;
+const object = Object;
+export const keys = object.keys;
+export const values = object.values;
+export const assign = object.assign;
+export const entries = object.entries;
+export const fromEntries = object.fromEntries;
+export const defineProperty = object.defineProperty;
+export const defineProperties = object.defineProperties;

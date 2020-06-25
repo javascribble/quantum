@@ -1,1 +1,2 @@
-export const all = Promise.all;
+const promise = Promise;
+export const all = promise.all;

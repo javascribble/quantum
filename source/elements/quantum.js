@@ -1,8 +1,7 @@
 import { defineProperty, keys } from '../aliases/object.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { apply } from '../decorators/function.js';
+import { createDispatcher } from '../extensions/element.js';
 import { forEach, map } from '../extensions/object.js';
-import { createDispatcher } from '../functions/event.js';
 
 export class Quantum extends HTMLElement {
     #renderers = {};
@@ -14,8 +13,9 @@ export class Quantum extends HTMLElement {
         root.appendChild(template.content.cloneNode(true));
 
         const { attributes, events } = this.constructor;
-        this.#renderers = map(attributes, apply((attribute, renderer) => [attribute, renderer(root)]));
-        forEach(events, apply((event, dispatcher) => dispatcher(root, createDispatcher(this, event))));
+        const applyEntries = delegate => argument => delegate(...argument);
+        this.#renderers = map(attributes, applyEntries((name, handler) => [name, handler(root)]));
+        forEach(events, applyEntries((name, handler) => handler(root, createDispatcher(this, name))));
     }
 
     static attributes = {};
