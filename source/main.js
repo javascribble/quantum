@@ -9,6 +9,7 @@ export * from './extensions/element.js';
 export * from './extensions/object.js';
 export * from './extensions/slot.js';
 export * from './functions/event.js';
+export * from './renames/element.js';
 export * from './utilities/animation.js';
 export * from './utilities/elements.js';
 export * from './utilities/templates.js';
