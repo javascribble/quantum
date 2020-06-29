@@ -1,7 +1,7 @@
 import { defineProperty, keys } from '../aliases/object.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { createDispatcher } from '../extensions/element.js';
-import { forEach, map } from '../extensions/object.js';
+import { iterate, map } from '../extensions/object.js';
+import { createDispatcher } from '../utilities/elements.js';
 
 export class Quantum extends HTMLElement {
     #renderers = {};
@@ -9,13 +9,12 @@ export class Quantum extends HTMLElement {
     constructor(template) {
         super();
 
-        const root = this.attachShadow({ mode: 'open' });
+        const root = this.attachShadow({ mode: 'closed' });
         root.appendChild(template.content.cloneNode(true));
 
         const { attributes, events } = this.constructor;
-        const applyEntries = delegate => argument => delegate(...argument);
-        this.#renderers = map(attributes, applyEntries((name, handler) => [name, handler(root)]));
-        forEach(events, applyEntries((name, handler) => handler(root, createDispatcher(this, name))));
+        this.#renderers = map(attributes, entry => [entry[0], entry[1](root)]);
+        iterate(events, entry => entry[1](root, createDispatcher(this, entry[0])));
     }
 
     static attributes = {};
@@ -35,6 +34,10 @@ export class Quantum extends HTMLElement {
         }
 
         return attributes;
+    }
+
+    static define(prefix = 'quantum', converter = type => type.name.toLowerCase()) {
+        customElements.define(`${prefix}-${converter(this)}`, this);
     }
 
     attributeChangedCallback(attribute, previous, current) {
