@@ -11,12 +11,13 @@ export class Quantum extends HTMLElement {
     constructor(template) {
         super();
 
-        const root = attachShadow(this, shadowDefault);
-        appendChild(root, cloneNode(template.content, true));
+        const shadow = attachShadow(this, shadowDefault);
+        appendChild(shadow, cloneNode(template.content, true));
 
+        const state = this.initialize(shadow);
         const { attributes, events } = this.constructor;
-        this.#renderers = mapEntries(attributes, entry => [entry[0], entry[1](root)]);
-        iterateEntries(events, entry => entry[1](root, createDispatcher(entry[0], this)));
+        this.#renderers = mapEntries(attributes, entry => [entry[0], entry[1](state)]);
+        iterateEntries(events, entry => entry[1](state, createDispatcher(entry[0], this)));
     }
 
     static attributes = {};
@@ -40,5 +41,9 @@ export class Quantum extends HTMLElement {
 
     attributeChangedCallback(attribute, previous, current) {
         this.#renderers[attribute](current, previous);
+    }
+
+    initialize(shadow) {
+        return shadow;
     }
 }
