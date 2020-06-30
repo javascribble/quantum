@@ -5,6 +5,7 @@ export * from './abstractions/math.js';
 export * from './abstractions/number.js';
 export * from './abstractions/object.js';
 export * from './abstractions/string.js';
+export * from './abstractions/window.js';
 export * from './constants/defaults.js';
 export * from './elements/quantum.js';
 export * from './extensions/array.js';

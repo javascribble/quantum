@@ -3,17 +3,17 @@
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module" src="/source/main.js"></script>
         <script type="module">
-            import { Quantum, define } from '/source/main.js';
+            import { Quantum, define, querySelector } from '/source/main.js';
 
             class Test extends Quantum {
                 constructor() {
-                    const template = document.querySelector('#template');
+                    const template = querySelector(document, '#template');
                     super(template);
                 }
 
                 static attributes = {
                     test: root => {
-                        const label = root.querySelector('div');
+                        const label = querySelector(root, 'div');
                         return value => {
                             label.innerText = value;
                             console.log(value);
@@ -23,7 +23,7 @@
 
                 static events = {
                     raise: (root, dispatch) => {
-                        const label = root.querySelector('div');
+                        const label = querySelector(root, 'div');
                         label.onclick = dispatch;
                     }
                 }
