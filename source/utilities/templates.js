@@ -1,14 +1,15 @@
-import { addEventListener } from '../abstractions/element.js';
+import { addEventListener, cloneNode } from '../abstractions/element.js';
 import { forEach } from '../abstractions/array.js';
 import { join } from '../abstractions/string.js';
-import { createElement } from '../abstractions/window.js';
+
+export const cloneTemplate = template => cloneNode(template.content, true);
 
 export const template = (html, ...css) => {
     if (css.length > 0) {
         html = `<style>${join(css, '')}</style>${html}`;
     }
 
-    const template = createElement('template');
+    const template = document.createElement('template');
     template.innerHTML = html;
     return template;
 };

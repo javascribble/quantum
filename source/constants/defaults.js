@@ -3,5 +3,5 @@ export const eventDefault = {
 };
 
 export const shadowDefault = {
-    mode: 'closed'
+    mode: 'open'
 };

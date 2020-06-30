@@ -1,5 +1,20 @@
 import { hasAttribute, getAttribute, setAttribute, removeAttribute } from '../abstractions/element.js';
-import { isNaN, number } from '../abstractions/number.js';
+import { defineProperty } from '../abstractions/object.js';
+
+export const defineAttributes = (attributes, object) => {
+    for (const attribute of attributes) {
+        defineProperty(object, attribute, {
+            get() {
+                return getTypedAttribute(this, attribute);
+            },
+            set(value) {
+                setTypedAttribute(this, attribute, value);
+            }
+        });
+    }
+
+    return attributes;
+};
 
 export const getTypedAttribute = (element, attribute) => {
     if (hasAttribute(element, attribute)) {
@@ -9,7 +24,7 @@ export const getTypedAttribute = (element, attribute) => {
             case 'true': return true;
             case 'false': return false;
             default:
-                const numberValue = number(stringValue);
+                const numberValue = Number(stringValue);
                 return isNaN(numberValue) ? stringValue : numberValue;
         }
     }
