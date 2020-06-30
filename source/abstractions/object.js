@@ -1,4 +1,4 @@
-const object = Object;
+export const object = Object;
 export const keys = object.keys;
 export const values = object.values;
 export const assign = object.assign;

@@ -1,0 +1,13 @@
+export const querySelector = (element, selector) => element.querySelector(selector);
+export const querySelectorAll = (element, selector) => element.querySelectorAll(selector);
+export const addEventListener = (element, listener) => element.addEventListener(listener);
+export const removeEventListener = (element, listener) => element.removeEventListener(listener);
+export const hasAttribute = (element, attribute) => element.hasAttribute(attribute);
+export const getAttribute = (element, attribute) => element.getAttribute(attribute);
+export const setAttribute = (element, attribute, value) => element.setAttribute(attribute, value);
+export const toggleAttribute = (element, attribute, force) => element.toggleAttribute(attribute, force);
+export const removeAttribute = (element, attribute) => element.removeAttribute(attribute);
+export const attachShadow = (element, options) => element.attachShadow(options);
+export const dispatchEvent = (element, event) => element.dispatchEvent(event);
+export const appendChild = (element, child) => element.appendChild(child);
+export const cloneNode = (element, deep) => element.cloneNode(deep);

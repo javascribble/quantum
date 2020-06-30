@@ -3,7 +3,7 @@
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module" src="/source/main.js"></script>
         <script type="module">
-            import { Quantum } from '/source/main.js';
+            import { Quantum, define } from '/source/main.js';
 
             class Test extends Quantum {
                 constructor() {
@@ -29,7 +29,7 @@
                 }
             }
 
-            Test.define();
+            define(Test);
         </script>
     </head>
     <body onload="load()">

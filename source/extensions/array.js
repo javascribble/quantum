@@ -1,3 +1,5 @@
-export const intersect = (array, domain) => array.filter(element => domain.includes(element));
+import { filter, includes } from '../abstractions/array.js';
 
-export const subtract = (array, domain) => array.filter(element => !domain.includes(element));
+export const intersect = (array, domain) => filter(array, element => includes(domain, element));
+
+export const subtract = (array, domain) => filter(array, element => !includes(domain, element));

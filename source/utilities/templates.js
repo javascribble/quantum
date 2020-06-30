@@ -1,6 +1,10 @@
+import { addEventListener } from '../abstractions/element.js';
+import { forEach } from '../abstractions/array.js';
+import { join } from '../abstractions/string.js';
+
 export const template = (html, ...css) => {
     if (css.length > 0) {
-        html = `<style>${css.join('')}</style>${html}`;
+        html = `<style>${join(css, '')}</style>${html}`;
     }
 
     const template = document.createElement('template');
@@ -10,10 +14,10 @@ export const template = (html, ...css) => {
 
 export const observeSlot = (slot, onAdd, onDelete) => {
     let previousElements = [];
-    slot.addEventListener('slotchange', _ => {
+    addEventListener(slot, 'slotchange', _ => {
         const currentElements = slot.assignedElements();
-        subtract(currentElements, previousElements).forEach(onAdd);
-        subtract(previousElements, currentElements).forEach(onDelete);
+        forEach(subtract(currentElements, previousElements), onAdd);
+        forEach(subtract(previousElements, currentElements), onDelete);
         previousElements = currentElements;
     });
 };

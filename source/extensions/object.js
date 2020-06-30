@@ -1,7 +1,8 @@
-import { entries, fromEntries } from '../aliases/object.js';
+import { forEach, map, filter } from '../abstractions/array.js';
+import { entries, fromEntries } from '../abstractions/object.js';
 
-export const iterate = (object, iterator) => entries(object).forEach(iterator);
+export const filterEntries = (object, iterator) => fromEntries(filter(entries(object), iterator));
 
-export const filter = (object, iterator) => fromEntries(entries(object).filter(iterator));
+export const mapEntries = (object, iterator) => fromEntries(map(entries(object), iterator));
 
-export const map = (object, iterator) => fromEntries(entries(object).map(iterator));
+export const iterateEntries = (object, iterator) => forEach(entries(object), iterator);

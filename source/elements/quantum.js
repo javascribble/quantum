@@ -1,7 +1,9 @@
-import { defineProperty, keys } from '../aliases/object.js';
-import { getAttribute, setAttribute } from '../decorators/element.js';
-import { iterate, map } from '../extensions/object.js';
-import { createDispatcher } from '../utilities/elements.js';
+import { attachShadow, appendChild, cloneNode } from '../abstractions/element.js';
+import { defineProperty, keys } from '../abstractions/object.js';
+import { iterateEntries, mapEntries } from '../extensions/object.js';
+import { getTypedAttribute, setTypedAttribute } from '../utilities/elements.js';
+import { createDispatcher } from '../utilities/events.js';
+import { shadowDefault } from '../constants/defaults.js';
 
 export class Quantum extends HTMLElement {
     #renderers = {};
@@ -9,12 +11,12 @@ export class Quantum extends HTMLElement {
     constructor(template) {
         super();
 
-        const root = this.attachShadow({ mode: 'closed' });
-        root.appendChild(template.content.cloneNode(true));
+        const root = attachShadow(this, shadowDefault);
+        appendChild(root, cloneNode(template.content, true));
 
         const { attributes, events } = this.constructor;
-        this.#renderers = map(attributes, entry => [entry[0], entry[1](root)]);
-        iterate(events, entry => entry[1](root, createDispatcher(this, entry[0])));
+        this.#renderers = mapEntries(attributes, entry => [entry[0], entry[1](root)]);
+        iterateEntries(events, entry => entry[1](root, createDispatcher(entry[0], this)));
     }
 
     static attributes = {};
@@ -25,19 +27,15 @@ export class Quantum extends HTMLElement {
         for (const attribute of attributes) {
             defineProperty(this.prototype, attribute, {
                 get() {
-                    return getAttribute(this, attribute);
+                    return getTypedAttribute(this, attribute);
                 },
                 set(value) {
-                    setAttribute(this, attribute, value);
+                    setTypedAttribute(this, attribute, value);
                 }
             });
         }
 
         return attributes;
-    }
-
-    static define(prefix = 'quantum', converter = type => type.name.toLowerCase()) {
-        customElements.define(`${prefix}-${converter(this)}`, this);
     }
 
     attributeChangedCallback(attribute, previous, current) {
