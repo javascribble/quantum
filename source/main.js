@@ -14,6 +14,5 @@ export * from './extensions/object.js';
 export * from './extensions/string.js';
 export * from './utilities/elements.js';
 export * from './utilities/events.js';
-export * from './utilities/network.js';
 export * from './utilities/templates.js';
 export * from './utilities/window.js';
