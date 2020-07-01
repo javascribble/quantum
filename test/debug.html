@@ -2,8 +2,7 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { querySelector, addEventListener } from '/references/abstract-dom.js';
-            import { Quantum, defineElement, template } from '/source/main.js';
+            import { Quantum, define, template } from '/source/main.js';
 
             class Test extends Quantum {
                 constructor() {
@@ -19,15 +18,15 @@
                 }
 
                 initializeShadowCallback(shadow) {
-                    shadow.label = querySelector(shadow, 'div');
+                    shadow.label = shadow.querySelector('div');
                     super.initializeShadowCallback(shadow);
                 }
             }
 
-            defineElement(Test);
+            define(Test);
 
-            const element = querySelector(document, 'quantum-test');
-            addEventListener(element, 'raise', console.log);
+            const element = document.querySelector('quantum-test');
+            element.addEventListener('raise', console.log);
             element.test = 'success';
         </script>
     </head>

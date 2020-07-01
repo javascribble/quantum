@@ -1,10 +1,5 @@
-import { attachShadow, appendChild } from '../../references/abstract-dom.js';
-import { keys } from '../abstractions/object.js';
-import { shadowDefault } from '../constants/defaults.js';
-import { iterateEntries, mapEntries } from '../extensions/object.js';
 import { defineAttributes } from '../utilities/elements.js';
 import { createDispatcher } from '../utilities/events.js';
-import { cloneTemplate } from '../utilities/templates.js';
 
 export class Quantum extends HTMLElement {
     #renderers = {};
@@ -12,8 +7,8 @@ export class Quantum extends HTMLElement {
     constructor(template) {
         super();
 
-        const shadow = attachShadow(this, shadowDefault);
-        appendChild(shadow, cloneTemplate(template));
+        const shadow = this.attachShadow({ mode: 'open' });
+        shadow.appendChild(template.content.cloneNode(true));
         this.initializeShadowCallback(shadow);
     }
 
@@ -21,7 +16,7 @@ export class Quantum extends HTMLElement {
     static events = {};
 
     static get observedAttributes() {
-        return defineAttributes(this.prototype, keys(this.attributes));
+        return defineAttributes(this.prototype, Object.keys(this.attributes));
     }
 
     attributeChangedCallback(attribute, previous, current) {
@@ -30,7 +25,7 @@ export class Quantum extends HTMLElement {
 
     initializeShadowCallback(shadow) {
         const { attributes, events } = this.constructor;
-        this.#renderers = mapEntries(attributes, entry => [entry[0], entry[1](shadow)]);
-        iterateEntries(events, entry => entry[1](shadow, createDispatcher(entry[0], this)));
+        this.#renderers = attributes.map(entry => [entry[0], entry[1](shadow)]);
+        events.forEach(entry => entry[1](shadow, createDispatcher(entry[0], this)));
     }
 }

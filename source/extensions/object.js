@@ -1,8 +1,11 @@
-import { forEach, map, filter } from '../abstractions/array.js';
-import { entries, fromEntries } from '../abstractions/object.js';
+Object.prototype.filter = function (iterator) {
+    return Object.fromEntries(Object.entries(this).filter(iterator));
+};
 
-export const filterEntries = (object, iterator) => fromEntries(filter(entries(object), iterator));
+Object.prototype.map = function (iterator) {
+    return Object.fromEntries(Object.entries(this).map(iterator));
+};
 
-export const mapEntries = (object, iterator) => fromEntries(map(entries(object), iterator));
-
-export const iterateEntries = (object, iterator) => forEach(entries(object), iterator);
+Object.prototype.forEach = function (iterator) {
+    Object.entries(this).forEach(iterator);
+};
