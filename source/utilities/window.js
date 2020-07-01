@@ -1,13 +1,11 @@
+import { now, define } from '../../references/abstract-dom.js';
 import { toLowerCase } from '../abstractions/string.js';
-import { elementDefault } from '../constants/defaults.js';
 
-export const define = (type, format = type => toLowerCase(type.name)) => customElements.define(`${elementDefault.prefix}-${format(type)}`, type);
-
-export const createElement = (tag) => document.createElement(tag);
+export const defineElement = (type, format = type => toLowerCase(type.name)) => define(`quantum-${format(type)}`, type);
 
 export const animate = (delegate) => {
     let frame = 0;
-    let previousTime = performance.now();
+    let previousTime = now();
     const runFrame = (currentTime) => {
         let deltaTime = currentTime - previousTime;
         if (delegate(deltaTime)) {

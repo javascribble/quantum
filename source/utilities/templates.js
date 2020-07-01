@@ -1,7 +1,6 @@
-import { addEventListener, cloneNode } from '../abstractions/element.js';
+import { createElement, addEventListener, cloneNode } from '../../references/abstract-dom.js';
 import { forEach } from '../abstractions/array.js';
 import { join } from '../abstractions/string.js';
-import { createElement } from './window.js';
 
 export const template = (html, ...css) => {
     if (css.length > 0) {

@@ -1,4 +1,4 @@
-import { attachShadow, appendChild } from '../abstractions/element.js';
+import { attachShadow, appendChild } from '../../references/abstract-dom.js';
 import { keys } from '../abstractions/object.js';
 import { shadowDefault } from '../constants/defaults.js';
 import { iterateEntries, mapEntries } from '../extensions/object.js';

@@ -1,4 +1,4 @@
-import { hasAttribute, getAttribute, setAttribute, removeAttribute } from '../abstractions/element.js';
+import { hasAttribute, getAttribute, setAttribute, removeAttribute } from '../../references/abstract-dom.js';
 import { defineProperty } from '../abstractions/object.js';
 
 export const getTypedAttribute = (element, attribute) => {

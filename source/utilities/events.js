@@ -1,4 +1,4 @@
-import { dispatchEvent } from '../abstractions/element.js';
+import { dispatchEvent } from '../../references/abstract-dom.js';
 import { eventDefault } from '../constants/defaults.js';
 
 export const createEvent = (name, options) => new CustomEvent(name, { ...eventDefault, ...options });

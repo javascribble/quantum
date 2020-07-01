@@ -3,7 +3,9 @@
     "description": "simple web components",
     "version": "0.3.16",
     "license": "MIT",
-    "dependencies": {},
+    "dependencies": {
+        "@javascribble/abstract-dom": "^0.0.1"
+    },
     "devDependencies": {
         "live-server": "*"
     },

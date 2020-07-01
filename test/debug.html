@@ -1,9 +1,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
-        <script type="module" src="/source/main.js"></script>
         <script type="module">
-            import { Quantum, define, template, querySelector, addEventListener } from '/source/main.js';
+            import { querySelector, addEventListener } from '/references/abstract-dom.js';
+            import { Quantum, defineElement, template } from '/source/main.js';
 
             class Test extends Quantum {
                 constructor() {
@@ -24,7 +24,7 @@
                 }
             }
 
-            define(Test);
+            defineElement(Test);
 
             const element = querySelector(document, 'quantum-test');
             addEventListener(element, 'raise', console.log);
