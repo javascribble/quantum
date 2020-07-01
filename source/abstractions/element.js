@@ -1,7 +1,7 @@
 export const querySelector = (element, selector) => element.querySelector(selector);
 export const querySelectorAll = (element, selector) => element.querySelectorAll(selector);
-export const addEventListener = (element, listener) => element.addEventListener(listener);
-export const removeEventListener = (element, listener) => element.removeEventListener(listener);
+export const addEventListener = (element, event, listener) => element.addEventListener(event, listener);
+export const removeEventListener = (element, event, listener) => element.removeEventListener(event, listener);
 export const hasAttribute = (element, attribute) => element.hasAttribute(attribute);
 export const getAttribute = (element, attribute) => element.getAttribute(attribute);
 export const setAttribute = (element, attribute, value) => element.setAttribute(attribute, value);

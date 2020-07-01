@@ -3,46 +3,35 @@
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module" src="/source/main.js"></script>
         <script type="module">
-            import { Quantum, define, querySelector } from '/source/main.js';
+            import { Quantum, define, template, querySelector, addEventListener } from '/source/main.js';
 
             class Test extends Quantum {
                 constructor() {
-                    const template = querySelector(document, '#template');
-                    super(template);
+                    super(template('<div></div>'));
                 }
 
                 static attributes = {
-                    test: root => {
-                        const label = querySelector(root, 'div');
-                        return value => {
-                            label.innerText = value;
-                            console.log(value);
-                        }
-                    }
+                    test: shadow => value => shadow.label.innerText = value
                 };
 
                 static events = {
-                    raise: (root, dispatch) => {
-                        const label = querySelector(root, 'div');
-                        label.onclick = dispatch;
-                    }
+                    raise: (shadow, dispatch) => shadow.label.onclick = dispatch
+                }
+
+                initializeShadowCallback(shadow) {
+                    shadow.label = querySelector(shadow, 'div');
+                    super.initializeShadowCallback(shadow);
                 }
             }
 
             define(Test);
+
+            const element = querySelector(document, 'quantum-test');
+            addEventListener(element, 'raise', console.log);
+            element.test = 'success';
         </script>
     </head>
-    <body onload="load()">
-        <quantum-test test="1"></quantum-test>
-        <template id="template">
-            <div></div>
-        </template>
+    <body>
+        <quantum-test></quantum-test>
     </body>
-    <script>
-        function load() {
-            const element = document.querySelector('quantum-test');
-            element.addEventListener('raise', console.log);
-            element.test = '2';
-        }
-    </script>
 </html>

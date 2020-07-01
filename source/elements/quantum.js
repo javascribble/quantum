@@ -21,7 +21,7 @@ export class Quantum extends HTMLElement {
     static events = {};
 
     static get observedAttributes() {
-        return defineAttributes(keys(this.attributes), this.prototype);
+        return defineAttributes(this.prototype, keys(this.attributes));
     }
 
     attributeChangedCallback(attribute, previous, current) {
