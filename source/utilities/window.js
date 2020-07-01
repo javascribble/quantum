@@ -15,5 +15,7 @@ export const animate = (delegate) => {
     };
 
     runFrame(previousTime);
-    return () => cancelAnimationFrame(frame);
+    return {
+        cancel: () => cancelAnimationFrame(frame)
+    };
 };
