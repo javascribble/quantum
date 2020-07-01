@@ -1,6 +1,7 @@
 import { toLowerCase } from '../abstractions/string.js';
+import { elementDefault } from '../constants/defaults.js';
 
-export const define = (type, prefix = 'quantum', converter = type => toLowerCase(type.name)) => customElements.define(`${prefix}-${converter(type)}`, type);
+export const define = (type, format = type => toLowerCase(type.name)) => customElements.define(`${elementDefault.prefix}-${format(type)}`, type);
 
 export const createElement = (tag) => document.createElement(tag);
 

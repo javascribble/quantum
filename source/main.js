@@ -11,6 +11,6 @@ export * from './extensions/math.js';
 export * from './extensions/object.js';
 export * from './utilities/elements.js';
 export * from './utilities/events.js';
-export * from './utilities/global.js';
+export * from './utilities/network.js';
 export * from './utilities/templates.js';
 export * from './utilities/window.js';
