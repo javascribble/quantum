@@ -1,18 +1,14 @@
-export const define = (type, format = type => type.name.toLowerCase()) => customElements.define(`quantum-${format(type)}`, type);
+export const define = type => customElements.define(`quantum-${type.name.toLowerCase()}`, type);
 
-export const animate = (delegate) => {
+export const animate = animation => {
     let frame = 0;
-    let previousTime = performance.now();
-    const runFrame = (currentTime) => {
-        let deltaTime = currentTime - previousTime;
-        if (delegate(deltaTime)) {
-            previousTime = currentTime;
-            frame = requestAnimationFrame(runFrame);
-        }
+    const run = (time) => {
+        animation(time);
+        frame = requestAnimationFrame(run);
     };
 
-    runFrame(previousTime);
     return {
-        cancel: () => cancelAnimationFrame(frame)
+        start: () => frame = requestAnimationFrame(run),
+        stop: () => cancelAnimationFrame(frame)
     };
 };
