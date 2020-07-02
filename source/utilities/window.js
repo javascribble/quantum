@@ -1,4 +1,10 @@
-export const define = type => customElements.define(`quantum-${type.name.toLowerCase()}`, type);
+export const define = type => {
+    const template = document.createElement('template');
+    template.innerHTML = type.template;
+    type.prototype.template = template;
+
+    customElements.define(`quantum-${type.name.toLowerCase()}`, type);
+};
 
 export const animate = frameHandler => {
     let frame = 0;
