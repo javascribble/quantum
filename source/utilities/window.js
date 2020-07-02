@@ -9,6 +9,7 @@ export const animate = frameHandler => {
     state.previousTime = state.startTime;
     const handleAnimationFrame = (time) => {
         state.deltaTime = time - state.previousTime;
+        state.elapsedTime = time - state.startTime;
         state.currentTime = time;
         if (frameHandler(state)) {
             frame = requestAnimationFrame(handleAnimationFrame);
