@@ -8,17 +8,17 @@ export class Quantum extends HTMLElement {
 
         const shadow = this.attachShadow({ mode: 'closed' });
         shadow.appendChild(this.template.content.cloneNode(true));
-        this.initializeShadowCallback(shadow);
+        for (const slot of shadow.querySelectorAll('slot')) {
+            let previousElements = [];
+            slot.addEventListener('slotchange', event => {
+                const currentElements = slot.assignedElements();
+                currentElements.subtract(previousElements).forEach(this?.addElement);
+                previousElements.subtract(currentElements).forEach(this?.removeElement);
+                previousElements = currentElements;
+            });
+        }
 
-        // const observeSlot = (slot, onAdd, onDelete) => {
-        //     let previousElements = [];
-        //     slot.addEventListener('slotchange', event => {
-        //         const currentElements = slot.assignedElements();
-        //         currentElements.subtract(previousElements).forEach(onAdd);
-        //         previousElements.subtract(currentElements).forEach(onDelete);
-        //         previousElements = currentElements;
-        //     });
-        // };
+        this.initializeShadowCallback(shadow);
     }
 
     static attributes = {};
