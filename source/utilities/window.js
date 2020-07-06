@@ -1,5 +1,3 @@
-export const define = type => customElements.define(`quantum-${type.name.toLowerCase()}`, type);
-
 export const animate = frameHandler => {
     let frame = 0;
     const state = {
