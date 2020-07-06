@@ -16,10 +16,10 @@ export const getAttribute = (element, attribute) => {
 
 export const setAttribute = (element, attribute, value) => {
     switch (value) {
-        case true: return element.setAttribute(attribute, '');
         case false:
         case null:
         case undefined: return element.removeAttribute(attribute);
+        case true: return element.setAttribute(attribute, '');
         default: return element.setAttribute(attribute, value);
     }
 };

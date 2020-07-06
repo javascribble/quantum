@@ -2,10 +2,10 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { Quantum, define } from '/source/main.js';
+            import { Quantum, define, html } from '/source/main.js';
 
             class Test extends Quantum {
-                static template = '<div></div>';
+                static template = html`<div></div>`;
 
                 static attributes = {
                     test: shadow => value => shadow.label.innerText = value

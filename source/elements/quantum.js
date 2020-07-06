@@ -7,7 +7,7 @@ export class Quantum extends HTMLElement {
         super();
 
         const shadow = this.attachShadow({ mode: 'closed' });
-        shadow.appendChild(this.template.content.cloneNode(true));
+        shadow.appendChild(this.constructor.template.content.cloneNode(true));
         for (const slot of shadow.querySelectorAll('slot')) {
             let previousElements = [];
             slot.addEventListener('slotchange', event => {
