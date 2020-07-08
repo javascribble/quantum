@@ -3,11 +3,11 @@ import { getAttribute, setAttribute } from '../decorators/element.js';
 export class Quantum extends HTMLElement {
     #renderers = {};
 
-    constructor() {
+    constructor(template) {
         super();
 
         const shadow = this.attachShadow({ mode: 'closed' });
-        shadow.appendChild(this.constructor.template.content.cloneNode(true));
+        shadow.appendChild(template.content.cloneNode(true));
         this.initializeShadowCallback(shadow);
     }
 

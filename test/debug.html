@@ -2,10 +2,14 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { Quantum, html } from '/source/main.js';
+            import { Component, template } from '/source/main.js';
 
-            class Test extends Quantum {
-                static template = html`<div></div>`;
+            const test = template('<div></div>');
+
+            class Test extends Component {
+                constructor() {
+                    super(test);
+                }
 
                 static attributes = {
                     test: shadow => value => shadow.label.innerText = value
