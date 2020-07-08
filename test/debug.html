@@ -2,26 +2,22 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { Component, template } from '/source/main.js';
+            import { Quantum, template } from '/source/main.js';
 
             const test = template('<div></div>');
 
-            class Test extends Component {
+            class Test extends Quantum {
+                #label;
+
                 constructor() {
                     super(test);
+
+                    this.#label = this.shadowRoot.querySelector('div');
+                    this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
                 }
 
-                static attributes = {
-                    test: shadow => value => shadow.label.innerText = value
-                };
-
-                static events = {
-                    raise: (shadow, dispatch) => shadow.label.onclick = dispatch
-                }
-
-                initializeShadowCallback(shadow) {
-                    shadow.label = shadow.querySelector('div');
-                    super.initializeShadowCallback(shadow);
+                testChangedCallback(value) {
+                    this.#label.innerText = value;
                 }
             }
 

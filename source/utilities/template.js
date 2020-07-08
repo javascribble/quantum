@@ -8,8 +8,8 @@ export const onSlotChange = (slot, onAdd, onDelete) => {
     let previousElements = [];
     return event => {
         const currentElements = slot.assignedElements();
-        currentElements.difference(previousElements).forEach(onAdd);
-        previousElements.difference(currentElements).forEach(onDelete);
+        currentElements.filter(element => !previousElements.includes(element)).forEach(onAdd);
+        previousElements.filter(element => !currentElements.includes(element)).forEach(onDelete);
         previousElements = currentElements;
     };
 };

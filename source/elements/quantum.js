@@ -1,38 +1,32 @@
+import { attributeOptions, shadowOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
 
 export class Quantum extends HTMLElement {
-    #renderers = {};
-
     constructor(template) {
         super();
 
-        const shadow = this.attachShadow({ mode: 'closed' });
-        shadow.appendChild(template.content.cloneNode(true));
-        this.initializeShadowCallback(shadow);
+        this.attachShadow(shadowOptions).appendChild(template.content.cloneNode(true));
     }
 
-    static attributes = {};
-    static events = {};
+    static attributes = [];
 
     static get observedAttributes() {
-        const attributes = Object.keys(this.attributes);
-        for (const attribute of attributes) {
+        const observableAttributes = [];
+        for (const attribute of this.attributes) {
+            if (this.prototype.hasOwnProperty(attributeOptions.formatChangedCallback(attribute))) {
+                observableAttributes.push(attribute);
+            }
+
             Object.defineProperty(this.prototype, attribute, {
                 get() { return getAttribute(this, attribute); },
                 set(value) { setAttribute(this, attribute, value); }
             });
         }
 
-        return attributes;
+        return observableAttributes;
     }
 
     attributeChangedCallback(attribute, previous, current) {
-        this.#renderers[attribute](current, previous);
-    }
-
-    initializeShadowCallback(shadow) {
-        const { attributes, events } = this.constructor;
-        this.#renderers = attributes.map(entry => [entry[0], entry[1](shadow)]);
-        events.forEach(entry => entry[1](shadow, options => this.dispatchEvent(new CustomEvent(entry[0], options))));
+        this[attributeOptions.formatChangedCallback(attribute)](current, previous);
     }
 }
