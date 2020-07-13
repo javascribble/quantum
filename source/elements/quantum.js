@@ -29,10 +29,12 @@ export class Quantum extends HTMLElement {
                     set(value) { setAttribute(this, attribute, value); }
                 });
 
-                const callback = `${formattedAttribute}ChangedCallback`;
-                if (this.prototype.hasOwnProperty(callback)) {
+                const formattedCallback = `${formattedAttribute}ChangedCallback`;
+                if (this.prototype.hasOwnProperty(formattedCallback)) {
                     observableAttributes.push(attribute);
-                    callbacks.set(attribute, callback);
+                    if (!callbacks.has(attribute)) {
+                        callbacks.set(attribute, formattedCallback);
+                    }
                 }
             }
         }
