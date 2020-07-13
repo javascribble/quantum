@@ -1,24 +1,9 @@
-import { elementOptions, shadowOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { formatAttribute } from '../utilities/format.js';
+import { formatAttribute } from '../utilities/element.js';
 
 const callbacks = new Map();
 
 export class Quantum extends HTMLElement {
-    constructor(options) {
-        super();
-
-        this.options = {
-            ...elementOptions,
-            ...shadowOptions,
-            ...options
-        };
-
-        if (this.options.shadow) {
-            this.attachShadow(this.options);
-        }
-    }
-
     static get observedAttributes() {
         const observableAttributes = [];
         if (Array.isArray(this.attributes)) {

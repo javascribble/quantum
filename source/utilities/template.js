@@ -4,9 +4,11 @@ export const template = html => {
     return template;
 };
 
-export const onSlotChange = (slot, onAdd, onDelete) => {
+export const clone = template => template.content.cloneNode(true);
+
+export const observeSlot = (slot, onAdd, onDelete) => {
     let previousElements = [];
-    return event => {
+    slot.onslotchange = event => {
         const currentElements = slot.assignedElements();
         currentElements.filter(element => !previousElements.includes(element)).forEach(onAdd);
         previousElements.filter(element => !currentElements.includes(element)).forEach(onDelete);

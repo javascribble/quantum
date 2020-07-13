@@ -2,9 +2,9 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { Quantum, template } from '/source/main.js';
+            import { Quantum, shadow, template, clone } from '/source/main.js';
 
-            const test = template('<div></div>');
+            const html = template('<div></div>');
 
             class Test extends Quantum {
                 #label;
@@ -12,8 +12,10 @@
                 constructor() {
                     super();
 
-                    this.shadowRoot.appendChild(test.content.cloneNode(true));
-                    this.#label = this.shadowRoot.querySelector('div');
+                    const root = shadow(this);
+                    root.appendChild(clone(html));
+
+                    this.#label = root.querySelector('div');
                     this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
                 }
 
