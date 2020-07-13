@@ -1,7 +1,7 @@
-export const shadowOptions = {
-    mode: 'open'
+export const elementOptions = {
+    shadow: true
 };
 
-export const attributeOptions = {
-    formatChangedCallback: attribute => `${attribute}ChangedCallback`
+export const shadowOptions = {
+    mode: 'open'
 };

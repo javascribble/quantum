@@ -10,11 +10,14 @@
                 #label;
 
                 constructor() {
-                    super(test);
+                    super();
 
+                    this.shadowRoot.appendChild(test.content.cloneNode(true));
                     this.#label = this.shadowRoot.querySelector('div');
                     this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
                 }
+
+                static attributes = ['test', 'test2'];
 
                 testChangedCallback(value) {
                     this.#label.innerText = value;

@@ -1,0 +1,1 @@
+export const formatAttribute = attribute => attribute.split('-').map((string, index) => index ? string.charAt(0).toUpperCase() + string.slice(1) : string).join('');
