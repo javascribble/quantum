@@ -1,36 +1,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
-        <script type="module">
-            import { Component, template } from '/source/main.js';
-
-            class Test extends Component {
-                #label;
-
-                constructor() {
-                    super();
-
-                    this.#label = this.shadowRoot.querySelector('div');
-                    this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
-                }
-
-                static template = template('<div></div>');
-
-                static attributes = ['test'];
-
-                testChangedCallback(value) {
-                    this.#label.innerText = value;
-                }
-            }
-
-            customElements.define('quantum-test', Test);
-
-            const element = document.querySelector('quantum-test');
-            element.addEventListener('raise', console.log);
-            element.test = 'success';
-        </script>
+        <script type="module" src="/test/debug.js"></script>
     </head>
     <body>
         <quantum-test></quantum-test>
+        <template id="quantum-test">
+            <div></div>
+        </template>
     </body>
 </html>
