@@ -4,8 +4,6 @@ export const template = html => {
     return template;
 };
 
-export const clone = template => template.content.cloneNode(true);
-
 export const observeSlot = (slot, onAdd, onDelete) => {
     let previousElements = [];
     slot.onslotchange = event => {

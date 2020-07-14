@@ -2,22 +2,19 @@
     <head>
         <link rel="stylesheet" href="/test/debug.css" />
         <script type="module">
-            import { Quantum, shadow, template, clone } from '/source/main.js';
+            import { Component, template } from '/source/main.js';
 
-            const html = template('<div></div>');
-
-            class Test extends Quantum {
+            class Test extends Component {
                 #label;
 
                 constructor() {
                     super();
 
-                    const root = shadow(this);
-                    root.appendChild(clone(html));
-
-                    this.#label = root.querySelector('div');
+                    this.#label = this.shadowRoot.querySelector('div');
                     this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
                 }
+
+                static template = template('<div></div>');
 
                 static attributes = ['test'];
 

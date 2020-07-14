@@ -1,9 +1,25 @@
+import { componentOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { formatAttribute } from '../utilities/element.js';
+import { formatAttribute } from '../utilities/format.js';
 
 const callbacks = new Map();
 
-export class Quantum extends HTMLElement {
+export class Component extends HTMLElement {
+    constructor(options) {
+        super();
+
+        const { template } = this.constructor;
+        const { shadow } = this.options = {
+            ...componentOptions,
+            ...options
+        };
+
+        const root = shadow ? this.attachShadow({ mode: 'open' }) : this;
+        if (template) {
+            root.appendChild(template.content.cloneNode(true));
+        }
+    }
+
     static get observedAttributes() {
         const observableAttributes = [];
         if (Array.isArray(this.attributes)) {

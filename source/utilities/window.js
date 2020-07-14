@@ -1,20 +1,19 @@
 export const animate = frameHandler => {
     let frame = 0;
-    const state = {
+    const time = {
         startTime: performance.now()
     };
 
-    state.previousTime = state.startTime;
-    const handleAnimationFrame = (time) => {
-        state.deltaTime = time - state.previousTime;
-        state.elapsedTime = time - state.startTime;
-        state.currentTime = time;
-        if (frameHandler(state)) {
+    const handleAnimationFrame = (frameTime) => {
+        time.deltaTime = frameTime - time.previousTime;
+        time.elapsedTime = frameTime - time.startTime;
+        time.currentTime = frameTime;
+        if (frameHandler(time)) {
             frame = requestAnimationFrame(handleAnimationFrame);
-            state.previousTime = time;
+            time.previousTime = frameTime;
         }
     };
 
-    handleAnimationFrame(state.startTime);
+    handleAnimationFrame(time.previousTime = time.startTime);
     return () => cancelAnimationFrame(frame);
 };
