@@ -24,3 +24,5 @@ customElements.define('quantum-test', Test);
 const element = document.querySelector('quantum-test');
 element.addEventListener('raise', console.log);
 element.test = 'success';
+
+document.body.style.visibility = 'visible';
