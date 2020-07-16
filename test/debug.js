@@ -1,4 +1,4 @@
-import { Component } from '/source/main.js';
+import { Component, template } from '/source/main.js';
 
 class Test extends Component {
     #label;
@@ -10,7 +10,7 @@ class Test extends Component {
         this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
     }
 
-    static template = document.querySelector('#quantum-test');
+    static template = template('<div></div>');
 
     static attributes = ['test'];
 

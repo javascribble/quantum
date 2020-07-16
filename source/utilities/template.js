@@ -1,3 +1,9 @@
+export const template = html => {
+    const element = document.createElement('template');
+    element.innerHTML = html;
+    return element;
+};
+
 export const observeSlot = (slot, onAdd, onDelete) => {
     let previousElements = [];
     slot.onslotchange = event => {
