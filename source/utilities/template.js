@@ -5,11 +5,14 @@ export const template = html => {
 };
 
 export const observeSlot = (slot, onAdd, onDelete) => {
-    let previousElements = [];
-    slot.onslotchange = event => {
-        const currentElements = slot.assignedElements();
-        currentElements.filter(element => !previousElements.includes(element)).forEach(onAdd);
-        previousElements.filter(element => !currentElements.includes(element)).forEach(onDelete);
-        previousElements = currentElements;
+    let elements = [];
+    const listener = event => {
+        const assignedElements = slot.assignedElements();
+        assignedElements.filter(element => !elements.includes(element)).forEach(onAdd);
+        elements.filter(element => !assignedElements.includes(element)).forEach(onDelete);
+        elements = assignedElements;
     };
+
+    slot.addEventListener('slotchange', listener);
+    return () => slot.removeEventListener('slotchange', listener);
 };
