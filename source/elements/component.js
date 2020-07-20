@@ -1,6 +1,6 @@
 import { componentOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { formatAttribute } from '../utilities/format.js';
+import { kebabToCamelCase } from '../utilities/format.js';
 
 const callbacks = new Map();
 
@@ -24,7 +24,7 @@ export class Component extends HTMLElement {
         const observableAttributes = [];
         if (Array.isArray(this.attributes)) {
             for (const attribute of this.attributes) {
-                const formattedAttribute = formatAttribute(attribute);
+                const formattedAttribute = kebabToCamelCase(attribute);
                 Object.defineProperty(this.prototype, formattedAttribute, {
                     get() { return getAttribute(this, attribute); },
                     set(value) { setAttribute(this, attribute, value); }
