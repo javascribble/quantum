@@ -1,4 +1,4 @@
-import { Component, template } from '/source/main.js';
+import { Component, template, define } from '/source/main.js';
 
 class Test extends Component {
     #label;
@@ -12,14 +12,16 @@ class Test extends Component {
 
     static template = template('<div></div>');
 
-    static attributes = ['test'];
+    static get observedAttributes() {
+        return ['test'];
+    }
 
-    testChangedCallback(value) {
-        this.#label.innerText = value;
+    attributeChangedCallback(attribute, previousValue, currentValue) {
+        this.#label.innerText = currentValue;
     }
 }
 
-customElements.define('quantum-test', Test);
+define('quantum-test', Test);
 
 const element = document.querySelector('quantum-test');
 element.addEventListener('raise', console.log);

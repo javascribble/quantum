@@ -1,1 +1,0 @@
-export const kebabToCamelCase = attribute => attribute.replace(/[^a-zA-Z0-9]+(.)/g, (match, character) => character.toUpperCase());
