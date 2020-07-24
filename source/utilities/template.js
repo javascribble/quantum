@@ -4,15 +4,12 @@ export const template = html => {
     return element;
 };
 
-export const observeSlot = (slot, onAdd, onDelete) => {
+export const slotListener = (slot, onAdd, onDelete) => {
     let elements = [];
-    const listener = event => {
+    return event => {
         const assignedElements = slot.assignedElements();
         assignedElements.filter(element => !elements.includes(element)).forEach(onAdd);
         elements.filter(element => !assignedElements.includes(element)).forEach(onDelete);
         elements = assignedElements;
     };
-
-    slot.addEventListener('slotchange', listener);
-    return () => slot.removeEventListener('slotchange', listener);
 };
