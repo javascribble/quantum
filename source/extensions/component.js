@@ -20,7 +20,7 @@ export class Component extends HTMLElement {
                     const assignedElements = slot.assignedElements();
                     const addedElements = assignedElements.filter(element => !elements.includes(element));
                     const deletedElements = elements.filter(element => !assignedElements.includes(element));
-                    this?.slotChangedCallback(slot, addedElements, deletedElements, assignedElements);
+                    this.slotChangedCallback?.(slot, addedElements, deletedElements, assignedElements);
                     elements = assignedElements;
                 });
             }
