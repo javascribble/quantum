@@ -11,8 +11,8 @@ export class Component extends HTMLElement {
             ...options
         };
 
-        const root = shadow ? this.attachShadow({ mode }) : this;
         if (template) {
+            const root = shadow ? this.attachShadow({ mode }) : this;
             root.appendChild(template.content.cloneNode(true));
             for (const slot of root.querySelectorAll('slot')) {
                 let elements = []; // This could be public
