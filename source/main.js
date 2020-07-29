@@ -1,6 +1,6 @@
 import * as optionsConstants from './constants/options.js';
 import * as elementDecorators from './decorators/element.js';
-import * as componentExtensions from './extensions/component.js';
+import * as componentElements from './elements/component.js';
 import * as numberFunctions from './functions/number.js';
 import * as stringFunctions from './functions/string.js';
 import * as animationUtilities from './utilities/animation.js';
@@ -10,7 +10,7 @@ import * as templateUtilities from './utilities/template.js';
 window.quantum = {
     ...optionsConstants,
     ...elementDecorators,
-    ...componentExtensions,
+    ...componentElements,
     ...numberFunctions,
     ...stringFunctions,
     ...animationUtilities,
@@ -20,7 +20,7 @@ window.quantum = {
 
 export * from './constants/options.js';
 export * from './decorators/element.js';
-export * from './extensions/component.js';
+export * from './elements/component.js';
 export * from './functions/number.js';
 export * from './functions/string.js';
 export * from './utilities/animation.js';
