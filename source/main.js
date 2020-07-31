@@ -1,3 +1,4 @@
+import * as eventCollections from './collections/event.js';
 import * as optionsConstants from './constants/options.js';
 import * as elementDecorators from './decorators/element.js';
 import * as componentElements from './elements/component.js';
@@ -8,6 +9,7 @@ import * as componentUtilities from './utilities/component.js';
 import * as templateUtilities from './utilities/template.js';
 
 window.quantum = {
+    ...eventCollections,
     ...optionsConstants,
     ...elementDecorators,
     ...componentElements,
@@ -18,6 +20,7 @@ window.quantum = {
     ...templateUtilities
 };
 
+export * from './collections/event.js';
 export * from './constants/options.js';
 export * from './decorators/element.js';
 export * from './elements/component.js';
