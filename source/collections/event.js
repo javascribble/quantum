@@ -1,14 +1,14 @@
 export class MulticastDelegate extends Set {
-    publish(value) {
-        for (const subscriber of this) {
-            subscriber(value);
+    invoke(value) {
+        for (const delegate of this) {
+            delegate(value);
         }
     }
 }
 
 export class EventBroker extends Map {
     publish(topic, value) {
-        this.get(topic)?.publish(value);
+        this.get(topic)?.invoke(value);
     }
 
     subscribe(topic, subscriber) {
