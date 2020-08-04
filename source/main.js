@@ -8,7 +8,7 @@ import * as animationUtilities from './utilities/animation.js';
 import * as componentUtilities from './utilities/component.js';
 import * as templateUtilities from './utilities/template.js';
 
-window.quantum = {
+window.quantum = Object.assign(window.quantum || {}, {
     ...eventCollections,
     ...optionsConstants,
     ...elementDecorators,
@@ -18,7 +18,7 @@ window.quantum = {
     ...animationUtilities,
     ...componentUtilities,
     ...templateUtilities
-};
+});
 
 export * from './collections/event.js';
 export * from './constants/options.js';
