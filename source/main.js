@@ -6,5 +6,5 @@ export * from './functions/number.js';
 export * from './functions/string.js';
 export * from './utilities/animation.js';
 export * from './utilities/component.js';
-export * from './utilities/draggables.js';
 export * from './utilities/template.js';
+export * from './utilities/visibility.js';
