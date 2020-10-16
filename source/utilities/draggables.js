@@ -1,0 +1,1 @@
+export const validateDrop = (draggable, droppable) => draggable.id !== droppable.id && draggable.group === droppable.group;
