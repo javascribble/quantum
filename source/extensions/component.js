@@ -1,5 +1,5 @@
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { formatAttribute } from '../functions/string.js';
+import { formatAttribute } from '../primitives/string.js';
 
 export const define = (name, type) => {
     const attributes = type.observedAttributes;
