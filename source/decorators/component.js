@@ -1,4 +1,4 @@
-import { getAttribute, setAttribute } from '../decorators/element.js';
+import { getAttribute, setAttribute } from './element.js';
 import { formatAttribute } from '../primitives/string.js';
 
 export const define = (name, type) => {
