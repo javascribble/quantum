@@ -4,10 +4,5 @@ Array.prototype.last = function () {
 
 Array.prototype.remove = function (element) {
     const index = this.indexOf(element);
-    if (index) {
-        this.splice(index, 1);
-        return true;
-    }
-
-    return false;
+    return index > -1 ? this.splice(index, 1)[0] : null;
 };
