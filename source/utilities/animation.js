@@ -9,5 +9,5 @@ export const animate = animation => {
     };
 
     iterate(startTime);
-    return () => cancelAnimationFrame(frame);
+    return { cancel: () => cancelAnimationFrame(frame) };
 };
