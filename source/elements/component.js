@@ -1,10 +1,6 @@
 import { componentOptions, shadowOptions } from '../constants/options.js';
-import { MulticastDelegate } from '../collections/event.js';
 
 export class Component extends HTMLElement {
-    onConnected = new MulticastDelegate();
-    onDisconnected = new MulticastDelegate();
-    onAdopted = new MulticastDelegate();
     slots = new Map();
 
     constructor(options) {
@@ -32,17 +28,5 @@ export class Component extends HTMLElement {
                 });
             }
         }
-    }
-
-    connectedCallback() {
-        this.onConnected.invoke();
-    }
-
-    disconnectedCallback() {
-        this.onDisconnected.invoke();
-    }
-
-    adoptedCallback() {
-        this.onAdopted.invoke();
     }
 }
