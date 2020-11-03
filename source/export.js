@@ -1,3 +1,3 @@
 import * as main from './main.js';
 
-quantum = main;
+window.quantum = main;
