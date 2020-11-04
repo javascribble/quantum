@@ -4,6 +4,7 @@ export * from './constants/options.js';
 export * from './decorators/element.js';
 export * from './decorators/component.js';
 export * from './elements/component.js';
+export * from './elements/plugin.js';
 export * from './extensions/array.js';
 export * from './extensions/map.js';
 export * from './extensions/set.js';
