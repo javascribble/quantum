@@ -1,3 +1,4 @@
+export * from './adapters/plugin.js';
 export * from './collections/event.js';
 export * from './constants/options.js';
 export * from './decorators/element.js';
