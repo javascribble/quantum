@@ -1,4 +1,4 @@
-export const extend = (type, prototype, adapter) => {
+export const plugin = (type, prototype, adapter) => {
     Object.assign(type.prototype, prototype);
-    Object.assign(type.adapter, adapter || prototype);
+    type.adapter = Object.assign(type.adapter || {}, adapter || prototype);
 };
