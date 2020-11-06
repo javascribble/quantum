@@ -1,5 +1,6 @@
 export * from './adapters/plugin.js';
-export * from './collections/event.js';
+export * from './collections/maps.js';
+export * from './collections/sets.js';
 export * from './constants/options.js';
 export * from './decorators/element.js';
 export * from './decorators/component.js';

@@ -1,12 +1,6 @@
-export class MulticastDelegate extends Set {
-    invoke(value) {
-        for (const delegate of this) {
-            delegate(value);
-        }
-    }
-}
+import { EventSet } from './sets.js';
 
-export class EventBroker extends Map {
+export class EventMap extends Map {
     publish(topic, value) {
         this.get(topic)?.invoke(value);
     }
@@ -15,7 +9,7 @@ export class EventBroker extends Map {
         if (this.has(topic)) {
             this.get(topic).add(subscriber);
         } else {
-            this.set(topic, new MulticastDelegate([subscriber]));
+            this.set(topic, new EventSet([subscriber]));
         }
     }
 
@@ -28,5 +22,17 @@ export class EventBroker extends Map {
                 set.delete(subscriber);
             }
         }
+    }
+}
+
+export class ObservableMap extends Map {
+    set(key, value) {
+        this.onSet?.(key, value);
+        super.set(key, value);
+    }
+
+    delete(key) {
+        this.onDelete?.(key);
+        super.delete(key);
     }
 }
