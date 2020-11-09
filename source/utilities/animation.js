@@ -1,13 +1,20 @@
 export const animate = animation => {
-    const startTime = performance.now();
-    let frame, previousTime = startTime;
-    const iterate = currentTime => {
-        if (animation(currentTime - previousTime, currentTime - startTime)) {
-            previousTime = currentTime;
+    const time = {
+        start: performance.now()
+    };
+
+    let frame;
+    time.previous = time.start;
+    const iterate = timestamp => {
+        time.delta = timestamp - time.previous;
+        time.elapsed = timestamp - time.start;
+        time.current = timestamp;
+        if (animation(time)) {
+            time.previous = timestamp;
             frame = requestAnimationFrame(iterate);
         }
     };
 
-    iterate(startTime);
+    iterate(time.start);
     return { cancel: () => cancelAnimationFrame(frame) };
 };
