@@ -19,12 +19,10 @@ export class Component extends HTMLElement {
             for (const slot of root.querySelectorAll('slot')) {
                 this.slots.set(slot, []);
                 slot.addEventListener('slotchange', event => {
-                    const elements = this.slots.get(slot);
-                    const assignedElements = slot.assignedElements();
-                    const addedElements = assignedElements.filter(element => !elements.includes(element));
-                    const deletedElements = elements.filter(element => !assignedElements.includes(element));
-                    this.slotChangedCallback?.(slot, addedElements, deletedElements);
-                    this.slots.set(slot, assignedElements);
+                    const previous = this.slots.get(slot);
+                    const current = slot.assignedElements();
+                    this.slotChangedCallback?.(slot, current.difference(previous), previous.difference(current));
+                    this.slots.set(slot, current);
                 });
             }
         }
