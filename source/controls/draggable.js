@@ -1,21 +1,12 @@
-const dragStart = event => {
-    const element = event.target;
-    const dataTransfer = event.dataTransfer;
-    dataTransfer.setData('id', element.id);
-    dataTransfer.setData('group', element.group);
-};
-
+const dragStart = event => event.dataTransfer.setData('id', event.target.id);
 const dragOver = event => event.preventDefault();
-
 const drop = event => {
     const element = event.target;
-    const dataTransfer = event.dataTransfer;
-    const id = dataTransfer.getData('id');
-    const group = dataTransfer.getData('group');
-    if (id !== element.id && group === element.group) {
+    const id = event.dataTransfer.getData('id');
+    if (element.id !== id) {
         event.preventDefault();
         for (const source of document.querySelectorAll(`#${id}`)) {
-            source.parentElement.insertBefore(source, element);
+            element.parentElement.insertBefore(source, element);
         }
     }
 };
