@@ -30,20 +30,16 @@ const drop = event => {
     // }
 };
 
-export const enableDragDrop = selector => {
-    for (const element of document.querySelectorAll(selector)) {
-        element.draggable = true;
-        element.addEventListener('dragstart', dragStart);
-        element.addEventListener('dragover', dragOver);
-        element.addEventListener('drop', drop);
-    }
+export const enableDragDrop = element => {
+    element.draggable = true;
+    element.addEventListener('dragstart', dragStart);
+    element.addEventListener('dragover', dragOver);
+    element.addEventListener('drop', drop);
 };
 
-export const disableDragDrop = selector => {
-    for (const element of document.querySelectorAll(selector)) {
-        element.draggable = false;
-        element.removeEventListener('dragstart', dragStart);
-        element.removeEventListener('dragover', dragOver);
-        element.removeEventListener('drop', drop);
-    }
+export const disableDragDrop = element => {
+    element.draggable = false;
+    element.removeEventListener('dragstart', dragStart);
+    element.removeEventListener('dragover', dragOver);
+    element.removeEventListener('drop', drop);
 };
