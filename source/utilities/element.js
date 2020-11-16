@@ -1,4 +1,4 @@
-import { getAttribute, setAttribute } from './element.js';
+import { getAttribute, setAttribute } from '../decorators/element.js';
 import { formatAttribute } from '../primitives/string.js';
 
 export const define = (name, type) => {
@@ -13,4 +13,10 @@ export const define = (name, type) => {
     }
 
     customElements.define(name, type);
+};
+
+export const template = html => {
+    const element = document.createElement('template');
+    element.innerHTML = html;
+    return element;
 };
