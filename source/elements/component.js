@@ -23,7 +23,7 @@ export class Component extends HTMLElement {
                 slot.addEventListener('slotchange', event => {
                     const previous = this.elements.get(slot);
                     const current = slot.assignedElements();
-                    this.slotChangedCallback?.(slot, current.difference(previous), previous.difference(current));
+                    this.slotChangedCallback?.(slot, current.difference(previous), previous.difference(current), current);
                     this.elements.set(slot, current);
                 });
             }
