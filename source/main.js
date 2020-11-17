@@ -1,7 +1,6 @@
 export * from './collections/maps.js';
 export * from './collections/sets.js';
 export * from './constants/options.js';
-export * from './controls/draggable.js';
 export * from './decorators/element.js';
 export * from './elements/component.js';
 export * from './extensions/array.js';
