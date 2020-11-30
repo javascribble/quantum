@@ -16,3 +16,7 @@ export const setAttribute = (element, attribute, value) => {
         default: return element.setAttribute(attribute, value);
     }
 };
+
+export const getAttributes = (elements, attribute) => elements.map(element => getAttribute(element, attribute));
+
+export const setAttributes = (elements, attribute, value) => elements.map(element => setAttribute(element, attribute, value));
