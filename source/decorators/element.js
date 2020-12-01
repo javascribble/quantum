@@ -1,18 +1,20 @@
 import { attributeOptions } from '../constants/options.js';
 
-export const getAttribute = (element, attribute) => {
-    const value = element.getAttribute(attribute);
+const { truthy, falsy } = attributeOptions.values;
 
-    if (attributeOptions.truthyValues.some(element => element === value)) {
+export const castAttribute = (attribute, value) => {
+    if (truthy.some(element => element === value)) {
         return true;
     }
 
-    if (attributeOptions.falsyValues.some(element => element === value)) {
+    if (falsy.some(element => element === value)) {
         return false;
     }
 
     return value === attribute ? true : value;
 };
+
+export const getAttribute = (element, attribute) => castAttribute(attribute, element.getAttribute(attribute));
 
 export const setAttribute = (element, attribute, value) => {
     switch (value) {

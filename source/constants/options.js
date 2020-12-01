@@ -7,13 +7,15 @@ export const shadowOptions = {
 };
 
 export const attributeOptions = {
-    truthyValues: [
-        'true',
-        ''
-    ],
-    falsyValues: [
-        'false',
-        undefined,
-        null
-    ]
+    values: {
+        truthy: [
+            'true',
+            ''
+        ],
+        falsy: [
+            'false',
+            undefined,
+            null
+        ]
+    }
 };
