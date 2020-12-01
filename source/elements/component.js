@@ -1,7 +1,6 @@
 import { componentOptions, shadowOptions } from '../constants/options.js';
 
 export class Component extends HTMLElement {
-    elements = new Map();
     slots = new Map();
 
     constructor(options) {
@@ -18,13 +17,12 @@ export class Component extends HTMLElement {
             const root = shadow ? this.attachShadow({ mode }) : this;
             root.appendChild(template.content.cloneNode(true));
             for (const slot of root.querySelectorAll('slot')) {
-                this.elements.set(slot, []);
-                this.slots.set(slot.name, slot);
+                const elements = [];
+                this.slots.set(slot.name, elements);
                 slot.addEventListener('slotchange', event => {
-                    const previous = this.elements.get(slot);
+                    const previous = [...elements];
                     const current = slot.assignedElements();
-                    this.elements.set(slot, current);
-
+                    elements.splice(0, elements.length, ...current);
                     this.slotChangedCallback?.(slot, current.difference(previous), previous.difference(current), current);
                 });
             }
