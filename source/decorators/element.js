@@ -1,10 +1,17 @@
+import { attributeOptions } from '../constants/options.js';
+
 export const getAttribute = (element, attribute) => {
-    if (element.hasAttribute(attribute)) {
-        const value = element.getAttribute(attribute);
-        return value === attribute ? true : value;
+    const value = element.getAttribute(attribute);
+
+    if (attributeOptions.truthyValues.some(element => element === value)) {
+        return true;
     }
 
-    return false;
+    if (attributeOptions.falsyValues.some(element => element === value)) {
+        return false;
+    }
+
+    return value === attribute ? true : value;
 };
 
 export const setAttribute = (element, attribute, value) => {

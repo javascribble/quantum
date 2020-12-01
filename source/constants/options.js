@@ -5,3 +5,15 @@ export const componentOptions = {
 export const shadowOptions = {
     mode: 'open'
 };
+
+export const attributeOptions = {
+    truthyValues: [
+        'true',
+        ''
+    ],
+    falsyValues: [
+        'false',
+        undefined,
+        null
+    ]
+};
