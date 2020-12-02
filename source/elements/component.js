@@ -1,26 +1,19 @@
 import { componentOptions, shadowOptions } from '../constants/options.js';
 
 export class Component extends HTMLElement {
-    slottedElements = new Map();
     slots = new Map();
 
     constructor(options) {
         super();
 
+        const { shadow, mode } = { ...componentOptions, ...shadowOptions, ...options };
         const { template } = this.constructor;
-        const { shadow, mode } = {
-            ...componentOptions,
-            ...shadowOptions,
-            ...options
-        };
-
         if (template) {
             const root = shadow ? this.attachShadow({ mode }) : this;
             root.appendChild(template.content.cloneNode(true));
             for (const slot of root.querySelectorAll('slot')) {
                 const elements = [];
-                this.slots.set(slot.name, slot);
-                this.slottedElements.set(slot.name, elements);
+                this.slots.set(slot.name, elements);
                 slot.addEventListener('slotchange', event => {
                     const previous = [...elements];
                     const current = slot.assignedElements();
