@@ -1,9 +1,10 @@
 import { minify } from 'html-minifier';
+import { terser } from "rollup-plugin-terser";
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 
 export default {
-    input: '../source/main.js',
+    input: '../source/export.js',
     output: {
         file: 'bundle.js',
         format: 'es'
@@ -11,6 +12,7 @@ export default {
     plugins: [
         commonjs(),
         resolve(),
+		terser(),
         {
             name: 'minify',
             transform(text, path) {
