@@ -34,15 +34,15 @@ export class Component extends HTMLElement {
         }
     }
 
-    // connectedCallback() {
+    connectedCallback() {
+        connected?.();
+    }
 
-    // }
+    disconnectedCallback() {
+        disconnected?.();
+    }
 
-    // disconnectedCallback() {
-
-    // }
-
-    // adoptedCallback() {
-
-    // }
+    adoptedCallback() {
+        adopted?.();
+    }
 }
