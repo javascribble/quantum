@@ -18,9 +18,31 @@ export class Component extends HTMLElement {
                     const previous = [...elements];
                     const current = slot.assignedElements();
                     elements.splice(0, elements.length, ...current);
-                    this.slotChangedCallback?.(slot, current.difference(previous), previous.difference(current), current);
+                    this.slotChangedCallback(slot, current.difference(previous), previous.difference(current), current);
                 });
             }
         }
     }
+
+    slotChangedCallback(slot, addedElements, deletedElements, currentElements) {
+        this[`${slot.name || 'default'}SlotChanged`]?.(slot, addedElements, deletedElements, currentElements);
+    }
+
+    attributeChangedCallback(attribute, previousValue, currentValue) {
+        if (previousValue !== currentValue) {
+            this[`${attribute || 'default'}AttributeChanged`]?.(attribute, previousValue, currentValue);
+        }
+    }
+
+    // connectedCallback() {
+
+    // }
+
+    // disconnectedCallback() {
+
+    // }
+
+    // adoptedCallback() {
+
+    // }
 }
