@@ -35,14 +35,14 @@ export class Component extends HTMLElement {
     }
 
     connectedCallback() {
-        connected?.();
+        this.connected?.();
     }
 
     disconnectedCallback() {
-        disconnected?.();
+        this.disconnected?.();
     }
 
     adoptedCallback() {
-        adopted?.();
+        this.adopted?.();
     }
 }
