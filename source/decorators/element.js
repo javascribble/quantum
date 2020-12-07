@@ -25,3 +25,8 @@ export const setAttribute = (element, attribute, value) => {
         default: return element.setAttribute(attribute, value);
     }
 };
+
+export const insertChild = (element, child, index) => {
+    const children = Array.from(element.children);
+    return index >= children.length ? element.appendChild(child) : element.insertBefore(child, children[index]);
+};
