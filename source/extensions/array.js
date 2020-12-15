@@ -10,3 +10,12 @@ Array.prototype.difference = function (domain) {
 Array.prototype.intersection = function (domain) {
     return this.filter(element => domain.includes(element));
 };
+
+Object.defineProperties(Array.prototype, {
+    first: {
+        get() { return this.length ? this[0] : null; }
+    },
+    last: {
+        get() { return this.length ? this[this.length - 1] : null; }
+    }
+});
