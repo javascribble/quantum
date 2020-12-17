@@ -11,3 +11,4 @@ export * from './primitives/string.js';
 export * from './styles/visibility.js';
 export * from './utilities/animation.js';
 export * from './utilities/element.js';
+export * from './utilities/events.js';
