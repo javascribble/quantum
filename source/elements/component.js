@@ -1,12 +1,10 @@
-import { componentOptions, shadowOptions } from '../constants/options.js';
-
 export class Component extends HTMLElement {
     slots = new Map();
 
     constructor(options) {
         super();
 
-        const { shadow, mode } = { ...componentOptions, ...shadowOptions, ...options };
+        const { shadow, mode } = { shadow: true, mode: 'open', ...options };
         const { template } = this.constructor;
         if (template) {
             const root = shadow ? this.attachShadow({ mode }) : this;
@@ -22,27 +20,5 @@ export class Component extends HTMLElement {
                 });
             }
         }
-    }
-
-    slotChangedCallback(slot, addedElements, deletedElements, currentElements) {
-        this[`${slot.name || 'default'}SlotChanged`]?.(slot, addedElements, deletedElements, currentElements);
-    }
-
-    attributeChangedCallback(attribute, previousValue, currentValue) {
-        if (previousValue !== currentValue) {
-            this[`${attribute || 'default'}AttributeChanged`]?.(attribute, previousValue, currentValue);
-        }
-    }
-
-    connectedCallback() {
-        this.connected?.();
-    }
-
-    disconnectedCallback() {
-        this.disconnected?.();
-    }
-
-    adoptedCallback() {
-        this.adopted?.();
     }
 }
