@@ -13,10 +13,11 @@ export class Component extends HTMLElement {
                 const elements = [];
                 this.slots.set(slot.name, elements);
                 slot.addEventListener('slotchange', event => {
-                    const previous = [...elements];
                     const current = slot.assignedElements();
-                    elements.splice(0, elements.length, ...current);
-                    this.slotChangedCallback(slot, current.difference(previous), previous.difference(current), current);
+                    const previous = elements.splice(0, elements.length, ...current);
+                    const added = current.filter(element => !previous.includes(element));
+                    const deleted = previous.filter(element => !current.includes(element));
+                    this.slotChangedCallback?.(slot, added, deleted, current);
                 });
             }
         }

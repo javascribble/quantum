@@ -12,9 +12,7 @@ class Test extends Component {
 
     static template = template('<div></div>');
 
-    static get observedAttributes() {
-        return ['test'];
-    }
+    static get observedAttributes() { return ['test']; }
 
     attributeChangedCallback(attribute, previousValue, currentValue) {
         this.#label.innerText = currentValue;
