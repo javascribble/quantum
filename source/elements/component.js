@@ -22,15 +22,4 @@ export class Component extends HTMLElement {
             }
         }
     }
-
-    recurse(delegate, filter) {
-        for (const [slot, elements] of this.slots) {
-            if (!filter || filter === slot || filter.contains?.(slot)) {
-                for (const element of elements) {
-                    delegate(element);
-                    element.recurse?.(delegate, slots);
-                }
-            }
-        }
-    }
 }
