@@ -4,7 +4,7 @@ export class Component extends HTMLElement {
     constructor(options) {
         super();
 
-        const { shadow, mode, composite } = { shadow: true, mode: 'open', ...options };
+        const { shadow, mode } = { shadow: true, mode: 'open', ...options };
         const { template } = this.constructor;
         if (template) {
             const root = shadow ? this.attachShadow({ mode }) : this;
@@ -13,7 +13,7 @@ export class Component extends HTMLElement {
                 const elements = [];
                 this.slots.set(slot.name, elements);
                 slot.addEventListener('slotchange', event => {
-                    const current = slot.assignedElements(composite);
+                    const current = slot.assignedElements();
                     const previous = elements.splice(0, elements.length, ...current);
                     const added = current.filter(element => !previous.includes(element));
                     const deleted = previous.filter(element => !current.includes(element));
