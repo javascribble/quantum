@@ -15,9 +15,7 @@ export class Component extends HTMLElement {
                 slot.addEventListener('slotchange', event => {
                     const current = slot.assignedElements();
                     const previous = elements.splice(0, elements.length, ...current);
-                    const added = current.filter(element => !previous.includes(element));
-                    const deleted = previous.filter(element => !current.includes(element));
-                    this.slotChangedCallback?.(slot, added, deleted, current);
+                    this.slotChangedCallback?.(slot, current.subtract(previous), previous.subtract(current), current);
                 });
             }
         }
