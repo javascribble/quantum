@@ -9,4 +9,11 @@ import './extensions/array.js';
 import './extensions/map.js';
 import './extensions/set.js';
 
-Object.assign(window, attribute, component, number, string, animation, element);
+window.quantum = {
+    ...attribute,
+    ...component,
+    ...number,
+    ...string,
+    ...animation,
+    ...element
+};
