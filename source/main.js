@@ -1,21 +1,20 @@
+import { Quantum } from './elements/quantum.js';
+
+import * as document from './decorators/document.js';
 import * as element from './decorators/element.js';
-import * as component from './elements/component.js';
-import * as number from './primitives/number.js';
-import * as string from './primitives/string.js';
 import * as animation from './utilities/animation.js';
+import * as primitives from './utilities/primitives.js';
 import * as resources from './utilities/resources.js';
-import * as templates from './utilities/templates.js';
 
 import './extensions/array.js';
 import './extensions/map.js';
 import './extensions/set.js';
 
+window.Quantum = Quantum;
 window.quantum = {
+    ...document,
     ...element,
-    ...component,
-    ...number,
-    ...string,
     ...animation,
-    ...resources,
-    ...templates
-};
+    ...primitives,
+    ...resources
+}

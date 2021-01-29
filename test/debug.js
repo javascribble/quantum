@@ -1,6 +1,6 @@
-import { Component, template, define } from '/source/main.js';
+import '/source/main.js';
 
-class Test extends Component {
+class Test extends Quantum {
     #label;
 
     constructor() {
@@ -10,8 +10,6 @@ class Test extends Component {
         this.#label.onclick = event => this.dispatchEvent(new Event('raise'));
     }
 
-    static template = template('<div></div>');
-
     static get observedAttributes() { return ['test']; }
 
     attributeChangedCallback(attribute, previousValue, currentValue) {
@@ -19,7 +17,7 @@ class Test extends Component {
     }
 }
 
-define('quantum-test', Test);
+Test.define('quantum-test', '<div></div>');
 
 const element = document.querySelector('quantum-test');
 element.addEventListener('raise', console.log);

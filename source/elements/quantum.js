@@ -1,4 +1,7 @@
-export class Component extends HTMLElement {
+import { getAttribute, setAttribute } from '../decorators/element.js';
+import { createTemplate } from '../decorators/document.js';
+
+export class Quantum extends HTMLElement {
     slots = new Map();
 
     constructor(options) {
@@ -20,4 +23,19 @@ export class Component extends HTMLElement {
             }
         }
     }
+
+    static define(name, html) {
+        if (html) {
+            this.template = createTemplate(html);
+        }
+
+        for (const observedAttribute of this.observedAttributes) {
+            Object.defineProperty(this.prototype, observedAttribute, {
+                get() { return getAttribute(this, observedAttribute); },
+                set(value) { setAttribute(this, observedAttribute, value); }
+            });
+        }
+
+        customElements.define(name, this);
+    };
 }
