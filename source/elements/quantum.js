@@ -29,11 +29,13 @@ export class Quantum extends HTMLElement {
             this.template = createTemplate(html);
         }
 
-        for (const observedAttribute of this.observedAttributes) {
-            Object.defineProperty(this.prototype, observedAttribute, {
-                get() { return getAttribute(this, observedAttribute); },
-                set(value) { setAttribute(this, observedAttribute, value); }
-            });
+        if (Array.isArray(this.observedAttributes)) {
+            for (const observedAttribute of this.observedAttributes) {
+                Object.defineProperty(this.prototype, observedAttribute, {
+                    get() { return getAttribute(this, observedAttribute); },
+                    set(value) { setAttribute(this, observedAttribute, value); }
+                });
+            }
         }
 
         customElements.define(name, this);
