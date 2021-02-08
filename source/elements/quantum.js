@@ -24,6 +24,8 @@ export class Quantum extends HTMLElement {
         }
     }
 
+    static types = [];
+
     static define(name, html) {
         if (html) {
             this.template = createTemplate(html);
@@ -39,5 +41,6 @@ export class Quantum extends HTMLElement {
         }
 
         customElements.define(name, this);
+        this.types.push(this);
     };
 }
