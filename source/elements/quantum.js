@@ -32,11 +32,13 @@ export class Quantum extends HTMLElement {
             this.template = createTemplate(html);
         }
 
-        if (Array.isArray(this.observedAttributes)) {
-            for (const observedAttribute of this.observedAttributes) {
-                Object.defineProperty(Quantum.prototype, observedAttribute, {
-                    get() { return getAttribute(this, observedAttribute); },
-                    set(value) { setAttribute(this, observedAttribute, value); }
+        const prototype = Quantum.prototype;
+        const attributes = this.observedAttributes;
+        if (Array.isArray(attributes)) {
+            for (const attribute of attributes.filter(attribute => !prototype.hasOwnProperty(attribute))) {
+                Object.defineProperty(prototype, attribute, {
+                    get() { return getAttribute(this, attribute); },
+                    set(value) { setAttribute(this, attribute, value); }
                 });
             }
         }
