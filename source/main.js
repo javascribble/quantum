@@ -5,6 +5,7 @@ import * as sets from './collections/sets.js';
 import * as options from './constants/options.js';
 import * as document from './decorators/document.js';
 import * as element from './decorators/element.js';
+import * as resize from './observers/resize.js';
 import * as animation from './utilities/animation.js';
 import * as primitives from './utilities/primitives.js';
 import * as resources from './utilities/resources.js';
@@ -20,6 +21,7 @@ window.quantum = {
     ...options,
     ...document,
     ...element,
+    ...resize,
     ...animation,
     ...primitives,
     ...resources
