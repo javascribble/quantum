@@ -9,6 +9,7 @@ import * as resize from './observers/resize.js';
 import * as animation from './utilities/animation.js';
 import * as primitives from './utilities/primitives.js';
 import * as resources from './utilities/resources.js';
+import * as timers from './utilities/timers.js';
 
 import './extensions/array.js';
 import './extensions/map.js';
@@ -24,5 +25,6 @@ window.quantum = {
     ...resize,
     ...animation,
     ...primitives,
-    ...resources
+    ...resources,
+    ...timers
 }
