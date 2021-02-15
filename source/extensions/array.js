@@ -1,6 +1,5 @@
 Array.prototype.remove = function (element) {
-    const index = this.indexOf(element);
-    return index > -1 ? this.splice(index, 1)[0] : null;
+    return this.splice(this.indexOf(element), 1)[0];
 };
 
 Array.prototype.subtract = function (domain) {
