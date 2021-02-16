@@ -1,6 +1,6 @@
 const observe = (entries, observer) => {
     for (const { target } of entries) {
-        target.dispatchEvent(new Event('resize'));
+        target.dispatchEvent(new CustomEvent('resize'));
     }
 };
 
