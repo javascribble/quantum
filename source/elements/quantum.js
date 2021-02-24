@@ -40,5 +40,6 @@ export class Quantum extends HTMLElement {
         }
 
         customElements.define(name, this);
+        Quantum[this.name] = this;
     };
 }
