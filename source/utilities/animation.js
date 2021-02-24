@@ -1,17 +1,23 @@
 export const animate = animation => {
-    let frame = 0;
-    let previous = performance.now();
     const time = { delta: 0, elapsed: 0 };
-    const iterate = current => {
+
+    let previous = performance.now();
+    const invoke = current => {
         const delta = current - previous;
-        time.delta = delta;
         time.elapsed += delta;
-        if (animation(time)) {
-            previous = current;
-            frame = requestAnimationFrame(iterate);
-        }
+        time.delta = delta;
+        previous = current;
+        animation(time);
     };
 
-    frame = requestAnimationFrame(iterate);
-    return { cancel: () => cancelAnimationFrame(frame) };
+    let frame = 0;
+    const iterate = current => {
+        invoke(current);
+        frame = requestAnimationFrame(iterate);
+    };
+
+    const start = () => frame = requestAnimationFrame(iterate);
+    const step = () => frame = requestAnimationFrame(invoke);
+    const stop = () => cancelAnimationFrame(frame);
+    return { start, step, stop };
 };
