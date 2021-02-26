@@ -1,4 +1,3 @@
-import { defaultComponentOptions, defaultShadowOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
 import { createTemplate } from '../decorators/document.js';
 
@@ -8,7 +7,7 @@ export class Quantum extends HTMLElement {
     constructor(options) {
         super();
 
-        const { shadow, mode } = { ...defaultComponentOptions, ...defaultShadowOptions, ...options };
+        const { shadow, mode } = { shadow: true, mode: 'open', ...options };
         const { template } = this.constructor;
         if (template) {
             const root = shadow ? this.attachShadow({ mode }) : this;
@@ -26,10 +25,7 @@ export class Quantum extends HTMLElement {
     }
 
     static define(name, html) {
-        if (html) {
-            this.template = createTemplate(html);
-        }
-
+        if (html) this.template = createTemplate(html);
         if (Array.isArray(this.observedAttributes)) {
             for (const observedAttribute of this.observedAttributes) {
                 Object.defineProperty(this.prototype, observedAttribute, {
