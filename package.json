@@ -25,6 +25,7 @@
         "quantum"
     ],
     "files": [
+		"bundle",
         "source"
     ]
 }
