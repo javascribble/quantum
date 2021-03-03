@@ -1,7 +1,7 @@
 {
     "name": "@javascribble/quantum",
     "description": "simple web components",
-    "version": "1.2.18",
+    "version": "1.2.19",
     "license": "MIT",
     "devDependencies": {
         "live-server": "*"
@@ -25,7 +25,7 @@
         "quantum"
     ],
     "files": [
-		"bundle",
+        "bundle",
         "source"
     ]
 }
