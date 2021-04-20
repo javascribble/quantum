@@ -10,14 +10,14 @@ export const animate = animation => {
         animation(time);
     };
 
-    let frame = 0;
+    let frame;
     const iterate = current => {
         invoke(current);
-        frame = requestAnimationFrame(iterate);
+        if (frame) frame = requestAnimationFrame(iterate);
     };
 
     const start = () => frame = requestAnimationFrame(iterate);
     const step = () => frame = requestAnimationFrame(invoke);
-    const stop = () => cancelAnimationFrame(frame);
+    const stop = () => frame = cancelAnimationFrame(frame);
     return { start, step, stop };
 };
