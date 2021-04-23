@@ -12,7 +12,6 @@ import * as resources from './utilities/resources.js';
 
 import './extensions/array.js';
 import './extensions/map.js';
-import './extensions/object.js';
 import './extensions/set.js';
 
 window.Quantum = Quantum;
