@@ -1,6 +1,6 @@
 import { componentOptions, shadowOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
-import { createTemplate } from '../decorators/document.js';
+import { createTemplate } from '../document/templates.js';
 
 export class Quantum extends HTMLElement {
     slots = new Map();
