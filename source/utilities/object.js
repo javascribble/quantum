@@ -1,0 +1,1 @@
+Object.map = (object, predicate) => Object.fromEntries(Object.entries(object).map(predicate));

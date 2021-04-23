@@ -1,0 +1,1 @@
+Number.random = (max = 1, min = 0) => Math.random() * (min - max) + min;
