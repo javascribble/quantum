@@ -13,9 +13,7 @@ import './extensions/array.js';
 import './extensions/map.js';
 import './extensions/set.js';
 
-import './utilities/math.js';
 import './utilities/number.js';
-import './utilities/object.js';
 import './utilities/string.js';
 
 window.Quantum = Quantum;
