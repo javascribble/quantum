@@ -1,7 +1,7 @@
 {
     "name": "@javascribble/quantum",
     "description": "simple web components",
-    "version": "1.2.27",
+    "version": "1.2.28",
     "license": "MIT",
     "devDependencies": {
         "@javascribble/rollup-quantum-build": "^1.1.1",
