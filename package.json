@@ -4,11 +4,10 @@
     "version": "1.4.0",
     "license": "MIT",
     "devDependencies": {
-        "@javascribble/rollup-quantum-build": "^1.1.1",
         "live-server": "*"
     },
     "scripts": {
-        "build": "node ./node_modules/@javascribble/rollup-quantum-build/source/main.js ./source/main.js ./build",
+        "build": "cd ../rollup-quantum-build && npm start ../quantum/source/main.js ../quantum/build",
         "start": "live-server --open=/test/debug.html",
         "postversion": "npm publish --access public"
     },
