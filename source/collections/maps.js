@@ -1,11 +1,12 @@
 export class ObservableMap extends Map {
     set(key, value) {
-        this.onSet?.(key, value);
         super.set(key, value);
+        this.onSet?.(value);
     }
 
     delete(key) {
-        this.onDelete?.(key, value);
+        const value = this.get(key);
         super.delete(key);
+        this.onDelete?.(value);
     }
 }
