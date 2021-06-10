@@ -5,7 +5,8 @@ export class ObservableSet extends Set {
     }
 
     delete(value) {
-        this.onDelete?.(value);
-        super.delete(value);
+        if (super.delete(value)) {
+            this.onDelete?.(value);
+        }
     }
 }
