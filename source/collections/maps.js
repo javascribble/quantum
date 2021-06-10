@@ -5,7 +5,7 @@ export class ObservableMap extends Map {
     }
 
     delete(key) {
-        this.onDelete?.(key);
+        this.onDelete?.(key, value);
         super.delete(key);
     }
 }
