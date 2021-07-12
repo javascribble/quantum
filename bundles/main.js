@@ -1,4 +1,4 @@
-export * as default from '../source/elements/quantum.js';
+export { Quantum as default } from '../source/elements/quantum.js';
 
 export * from '../source/collections/maps.js';
 export * from '../source/collections/sets.js';

@@ -1,6 +1,6 @@
-import main from '/bundles/main.js';
+import '/bundles/main-window.js';
 
-class Test extends main.Quantum {
+class Test extends Quantum {
     #label;
 
     constructor() {
