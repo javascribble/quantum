@@ -1,6 +1,6 @@
-import '/source/main.js';
+import main from '/bundles/main.js';
 
-class Test extends Quantum {
+class Test extends main.Quantum {
     #label;
 
     constructor() {
@@ -22,7 +22,5 @@ Test.define('quantum-test', '<div></div>');
 const element = document.querySelector('quantum-test');
 element.addEventListener('raise', console.log);
 element.test = 'success';
-
-console.log(Quantum.Test);
 
 document.body.style.visibility = 'visible';
