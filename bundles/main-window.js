@@ -1,4 +1,4 @@
-import Quantum, * as quantum from './main.js';
+import * as quantum from './main.js';
 
-window.Quantum = Quantum;
+window.Quantum = quantum.Quantum;
 window.quantum = quantum;
