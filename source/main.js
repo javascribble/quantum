@@ -24,3 +24,16 @@ window.quantum = {
     ...animation,
     ...resources
 };
+
+export default Quantum;
+
+export * from maps;
+export * from sets;
+export * from options;
+export * from element;
+export * from templates;
+export * from resize;
+export * from numbers;
+export * from strings;
+export * from animation;
+export * from resources;
