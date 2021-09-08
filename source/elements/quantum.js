@@ -27,6 +27,10 @@ export class Quantum extends HTMLElement {
         }
     }
 
+    attributeChangedCallback(attribute, previousValue, currentValue) {
+        this.dispatchEvent(new CustomEvent('attributechange', { detail: { attribute, previousValue, currentValue } }));
+    }
+
     static define(name, html) {
         if (html) this.template = createTemplate(html);
         if (Array.isArray(this.observedAttributes)) {
