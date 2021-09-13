@@ -1,6 +1,6 @@
 import '/bundles/main-window.js';
 
-const { persist, resizeObserver } = quantum;
+const { resizeObserver } = quantum;
 
 class Test extends Quantum {
     text = this.shadowRoot.querySelector('textarea');
@@ -25,6 +25,5 @@ Test.define('quantum-test', '<div></div><textarea></textarea>');
 const element = document.querySelector('quantum-test');
 element.text.addEventListener('resize', console.log);
 resizeObserver.observe(element.text);
-persist(element);
 
 document.body.style.visibility = 'visible';

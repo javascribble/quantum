@@ -1,8 +1,9 @@
 import { componentOptions, shadowOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
 import { createTemplate } from '../document/templates.js';
+import { Component } from './component.js';
 
-export class Quantum extends HTMLElement {
+export class Quantum extends Component {
     slots = new Map();
 
     constructor(options) {
@@ -21,23 +22,24 @@ export class Quantum extends HTMLElement {
                     const previous = elements.splice(0, elements.length, ...current);
                     const added = current.filter(element => !previous.includes(element));
                     const removed = previous.filter(element => !current.includes(element));
-                    this.slotChangedCallback?.(slot, added, removed, current);
+                    this.slotChangedCallback(slot, added, removed, current);
                 });
             }
         }
     }
 
     static define(name, html) {
-        if (html) this.template = createTemplate(html);
-        if (Array.isArray(this.observedAttributes)) {
-            for (const observedAttribute of this.observedAttributes) {
-                Object.defineProperty(this.prototype, observedAttribute, {
-                    get() { return getAttribute(this, observedAttribute); },
-                    set(value) { setAttribute(this, observedAttribute, value); }
-                });
-            }
+        if (html) {
+            this.template = createTemplate(html);
+        }
+
+        for (const observedAttribute of this.observedAttributes) {
+            Object.defineProperty(this.prototype, observedAttribute, {
+                get() { return getAttribute(this, observedAttribute); },
+                set(value) { setAttribute(this, observedAttribute, value); }
+            });
         }
 
         customElements.define(name, this);
-    };
+    }
 }
