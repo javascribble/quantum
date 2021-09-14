@@ -1,5 +1,8 @@
-export const componentOptions = { shadow: true };
+export const componentOptions = {
+    shadow: true,
+    mode: 'open'
+};
 
-export const shadowOptions = { mode: 'open' };
-
-export const eventOptions = { debounce: 300 };
+export const eventOptions = {
+    debounce: 300
+};

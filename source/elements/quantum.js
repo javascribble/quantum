@@ -1,4 +1,4 @@
-import { componentOptions, shadowOptions } from '../constants/options.js';
+import { componentOptions } from '../constants/options.js';
 import { getAttribute, setAttribute } from '../decorators/element.js';
 import { createTemplate } from '../document/templates.js';
 import { Component } from './component.js';
@@ -9,7 +9,7 @@ export class Quantum extends Component {
     constructor(options) {
         super();
 
-        const { shadow, mode } = { ...componentOptions, ...shadowOptions, ...options };
+        const { shadow, mode } = { ...componentOptions, ...options };
         const { template } = this.constructor;
         if (template) {
             const root = shadow ? this.attachShadow({ mode }) : this;
