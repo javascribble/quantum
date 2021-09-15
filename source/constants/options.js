@@ -3,6 +3,7 @@ export const componentOptions = {
     mode: 'open'
 };
 
-export const eventOptions = {
-    debounce: 300
+export const debounceOptions = {
+    immediate: true,
+    delay: 100
 };
