@@ -9,7 +9,10 @@ class Test extends Quantum {
     constructor() {
         super();
 
+        resizeObserver.observe(this.text);
+
         this.text.addEventListener('change', event => this.test = event.target.value);
+        this.text.addEventListener('resize', console.log);
     }
 
     static get observedAttributes() { return ['test']; }
@@ -21,9 +24,5 @@ class Test extends Quantum {
 }
 
 Test.define('quantum-test', '<div></div><textarea></textarea>');
-
-const element = document.querySelector('quantum-test');
-element.text.addEventListener('resize', console.log);
-resizeObserver.observe(element.text);
 
 document.body.style.visibility = 'visible';

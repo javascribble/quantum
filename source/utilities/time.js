@@ -2,7 +2,12 @@ import { debounceOptions } from '../constants/options.js';
 
 const timeouts = new Map();
 
-const execute = (action, argument) => () => {
+const executeImmediate = (action, argument) => {
+    action(argument);
+    return () => timeouts.delete(action);
+};
+
+const executeDelayed = (action, argument) => () => {
     timeouts.delete(action);
     action(argument);
 };
@@ -10,17 +15,11 @@ const execute = (action, argument) => () => {
 export const debounce = (action, options) => argument => {
     const { delay, immediate } = { ...debounceOptions, ...options };
 
-    let timeout = timeouts.get(action);
+    const timeout = timeouts.get(action);
     if (timeout) {
         clearTimeout(timeout);
     }
 
-    if (timeout || !immediate) {
-        timeout = setTimeout(execute(action, argument), delay);
-    } else {
-        action(argument);
-        timeout = setTimeout(() => timeouts.delete(action), delay);
-    }
-
-    timeouts.set(action, timeout);
+    const method = (timeout || !immediate) ? executeDelayed : executeImmediate;
+    timeouts.set(action, setTimeout(method(action, argument), delay));
 };
