@@ -9,8 +9,11 @@ export const cloneTemplate = template => {
         slot.addEventListener('slotchange', event => {
             const current = slot.assignedElements();
             const previous = Array.from(elements);
-            current.filter(element => !previous.includes(element)).forEach(element => elements.add(element));
-            previous.filter(element => !current.includes(element)).forEach(element => elements.delete(element));
+            const added = current.filter(element => !previous.includes(element));
+            const deleted = previous.filter(element => !current.includes(element));
+            added.forEach(element => elements.add(element));
+            deleted.forEach(element => elements.delete(element));
+            slots.onChange?.(slot, added, deleted, current);
         });
     }
 
