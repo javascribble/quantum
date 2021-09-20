@@ -14,8 +14,6 @@ class Test extends Quantum {
 
         resizeObserver.observe(text);
 
-        this.template.slots.get('').onAdd = console.log;
-
         this.appendChild(text);
     }
 
@@ -23,6 +21,10 @@ class Test extends Quantum {
 
     attributeChangedCallback(attribute, previousValue, currentValue) {
         this.label.innerText = currentValue;
+    }
+
+    slotChangedCallback(slot, addedElements, deletedElements, currentElements) {
+        console.log(currentElements);
     }
 }
 

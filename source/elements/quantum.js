@@ -9,31 +9,26 @@ export class Quantum extends HTMLElement {
     constructor(options) {
         super();
 
+        const { shadow, mode } = { ...componentOptions, ...options };
+        const root = (shadow ? this.attachShadow({ mode }) : this);
+
         const { template } = this.constructor;
         if (template) {
-            const { shadow, mode } = { ...componentOptions, ...options };
-            const root = shadow ? this.attachShadow({ mode }) : this;
-            root.appendChild(this.template = cloneTemplate(template));
+            this.template = root.appendChild(cloneTemplate(template));
+            this.template.slotChangedCallback = this.slotChangedCallback;
         }
     }
 
     static define(name, html) {
-        if (html) {
-            this.template = createTemplate(html);
-        }
-
+        if (html) this.template = createTemplate(html);
         defineElement(name, this);
     }
 
     connectedCallback() {
-        for (const observer of this.observers) {
-            observer.observe(this);
-        }
+        for (const observer of this.observers) observer.observe(this);
     }
 
     disconnectedCallback() {
-        for (const observer of this.observers) {
-            observer.unobserve(this);
-        }
+        for (const observer of this.observers) observer.unobserve(this);
     }
 }
