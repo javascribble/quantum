@@ -8,7 +8,7 @@ export const cloneTemplate = template => {
             const previous = elements.splice(0, elements.length, ...current);
             const added = current.filter(element => !previous.includes(element));
             const removed = previous.filter(element => !current.includes(element));
-            clone.slotChangedCallback?.(slot, added, removed, current);
+            clone.onchange?.(slot, added, removed, current);
         });
     }
 
