@@ -19,7 +19,6 @@ class Test extends Quantum {
 
     attributeChangedCallback(attribute, previousValue, currentValue) {
         this.label.innerText = currentValue;
-        super.attributeChangedCallback(attribute, previousValue, currentValue);
     }
 }
 
