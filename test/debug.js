@@ -3,16 +3,20 @@ import '/bundles/main-window.js';
 const { resizeObserver } = quantum;
 
 class Test extends Quantum {
-    text = this.shadowRoot.querySelector('textarea');
     label = this.shadowRoot.querySelector('div');
 
     constructor() {
         super();
 
-        resizeObserver.observe(this.text);
+        const text = document.createElement('textarea');
+        text.addEventListener('change', event => this.test = event.target.value);
+        text.addEventListener('resize', console.log);
 
-        this.text.addEventListener('change', event => this.test = event.target.value);
-        this.text.addEventListener('resize', console.log);
+        resizeObserver.observe(text);
+
+        this.template.slots.get('').onAdd = console.log;
+
+        this.appendChild(text);
     }
 
     static get observedAttributes() { return ['test']; }
@@ -22,6 +26,6 @@ class Test extends Quantum {
     }
 }
 
-Test.define('quantum-test', '<div></div><textarea></textarea>');
+Test.define('quantum-test', '<div></div><slot></slot>');
 
 document.body.style.visibility = 'visible';

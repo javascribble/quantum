@@ -1,4 +1,4 @@
-import { debounce } from '../utilities/time.js';
+import { debounce } from '../window/time.js';
 
 const dispatch = entries => {
     for (const entry of entries) {
