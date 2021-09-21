@@ -15,7 +15,7 @@ export class Quantum extends HTMLElement {
         const { template } = this.constructor;
         if (template) {
             this.template = root.appendChild(cloneTemplate(template));
-            this.template.onchange = this.slotChangedCallback.bind(this);
+            this.template.onchange = this.slotChangedCallback?.bind(this);
         }
     }
 
