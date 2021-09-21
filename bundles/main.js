@@ -3,7 +3,6 @@ export * from '../source/decorators/element.js';
 export * from '../source/decorators/template.js';
 export * from '../source/document/templates.js';
 export * from '../source/elements/quantum.js';
-export * from '../source/observers/mutation.js';
 export * from '../source/observers/resize.js';
 export * from '../source/utilities/numbers.js';
 export * from '../source/utilities/strings.js';
