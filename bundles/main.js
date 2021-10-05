@@ -1,4 +1,5 @@
 export * from '../source/constants/options.js';
+export * from '../source/constants/presets.js';
 export * from '../source/decorators/element.js';
 export * from '../source/decorators/template.js';
 export * from '../source/document/templates.js';
